@@ -30,6 +30,7 @@
     '<div class="carte-cat">' + v.categorie + "</div>" +
     "<h1>" + nom + " " + v.annee + "</h1>" +
     '<div class="fiche-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</div>" +
+    (v.notePrix ? '<div class="carte-meta" style="margin-bottom:6px">' + v.notePrix + "</div>" : "") +
     '<div class="stock">✓ En stock (' + v.stock + " disponible" + (v.stock > 1 ? "s" : "") + ")</div>" +
     '<p class="fiche-desc">' + v.description + "</p>" +
     '<div class="fiche-actions">' +

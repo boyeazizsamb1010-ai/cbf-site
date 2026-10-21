@@ -45,6 +45,7 @@
       '<div class="carte-corps"><span class="carte-cat">' + v.categorie + "</span>" +
       '<span class="carte-titre">' + v.marque + " " + v.modele + " " + v.annee + "</span>" +
       '<span class="carte-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</span>" +
+      (v.notePrix ? '<span class="carte-meta" style="font-size:.78rem">' + v.notePrix + "</span>" : "") +
       '<span class="carte-meta">' + v.carburant + " · " + v.transmission + (v.km ? " · " + fmtKm(v.km) : "") + "</span>" +
       '<span class="carte-lien">Voir la fiche →</span></div></a>'
     );
