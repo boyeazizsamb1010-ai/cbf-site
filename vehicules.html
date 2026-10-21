@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Véhicules – {{nom}}</title>
+  <meta name="description" content="Catalogue de véhicules neufs et d'occasion : recherchez par marque, modèle ou catégorie.">
+  <link rel="icon" href="images/logo-emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-titre">
+      <div class="eyebrow">Sur le site</div>
+      <h1>Tout le catalogue, en ligne.</h1>
+      <p>Trouvez le véhicule qu'il vous faut, puis contactez-nous sur WhatsApp.</p>
+    </div>
+
+    <div class="outils">
+      <div class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Rechercher une marque, un modèle…" aria-label="Rechercher"></div>
+      <select id="tri" aria-label="Trier">
+        <option value="">Trier par</option>
+        <option value="prix-asc">Prix croissant</option>
+        <option value="prix-desc">Prix décroissant</option>
+        <option value="annee-desc">Plus récents</option>
+      </select>
+    </div>
+    <div class="pastilles" id="categories"></div>
+    <div class="pastilles" id="etats"></div>
+
+    <p class="compteur" id="compteur"></p>
+    <div class="grille" id="liste"></div>
+    <p class="vide" id="vide" hidden>Aucun véhicule ne correspond à votre recherche.</p>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/catalogue.js"></script>
+</body>
+</html>
