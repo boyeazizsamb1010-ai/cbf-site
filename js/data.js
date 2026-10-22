@@ -21,6 +21,7 @@ window.VEHICULES = [
     portes: 5, stock: 1, // Nombre de portes et stock disponible
     vedette: true, // Indique si le véhicule est en vedette
     teinte: "#15161a", // Couleur de teinte pour l'affichage
+
     photos: [
       "changan-unit-avant-1.jpg",
       "changan-unit-avant-2.jpg",
@@ -50,7 +51,8 @@ window.VEHICULES = [
     transmission: "Automatique",
     couleur: "Blanc", 
     puissance: "2.0T · 160 kW", 
-    portes: 5, stock: 1,
+    portes: 5, 
+    stock: 1,
     vedette: true, 
     teinte: "#e8e8e8",
 
