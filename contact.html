@@ -1,45 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact – {{nom}}</title>
+
   <meta name="description" content="Contactez-nous par WhatsApp, email ou en vous déplaçant dans nos locaux.">
   <link rel="icon" href="images/logo-emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
   <header id="site-header"></header>
 
   <main class="container">
+
     <div class="page-titre">
+
       <div class="eyebrow">Sur le site</div>
+
       <h1>Écrivez-nous sur WhatsApp.</h1>
+
       <p>Nos coordonnées et un formulaire qui ouvre directement WhatsApp.</p>
+
     </div>
+
     <div class="contact-grille">
+
       <div class="bloc">
+
         <h2>Nos coordonnées</h2>
-        <div class="info-ligne"><div><strong>Adresse</strong><span id="c-adresse"></span></div></div>
-        <div class="info-ligne"><div><strong>Horaires</strong><span id="c-horaires"></span></div></div>
-        <div class="info-ligne"><div><strong>Email</strong><a id="c-email"></a></div></div>
-        <div class="info-ligne"><div><strong>WhatsApp</strong><span id="c-wa"></span></div></div>
-        <a class="btn btn-wa btn-block" id="c-btn" target="_blank" rel="noopener" style="margin-top:14px">Ouvrir WhatsApp</a>
-      </div>
-      <form class="bloc" id="form" novalidate>
-        <h2>Envoyez un message</h2>
-        <div class="champ"><label for="nom">Nom *</label><input id="nom" required autocomplete="name"></div>
-        <div class="ligne2">
-          <div class="champ"><label for="email">Email</label><input id="email" type="email" autocomplete="email"></div>
-          <div class="champ"><label for="tel">Téléphone</label><input id="tel" type="tel" autocomplete="tel"></div>
+
+        <div class="info-ligne">
+          <div><strong>Adresse</strong><span id="c-adresse"></span>
+          </div>
         </div>
-        <div class="champ"><label for="msg">Votre message *</label><textarea id="msg" rows="5" required></textarea></div>
+
+        <div class="info-ligne">
+          <div><strong>Horaires</strong><span id="c-horaires"></span>
+          </div>
+        </div>
+
+        <div class="info-ligne">
+          <div><strong>Email</strong><a id="c-email"></a>
+          </div>
+        </div>
+
+        <div class="info-ligne">
+          <div><strong>WhatsApp</strong><span id="c-wa"></span>
+          </div>
+        </div>
+
+        <a class="btn btn-wa btn-block" id="c-btn" target="_blank" rel="noopener" style="margin-top:14px">Ouvrir WhatsApp</a>
+
+      </div>
+
+      <form class="bloc" id="form" novalidate>
+
+        <h2>Envoyez un message</h2>
+
+        <div class="champ">
+          <label for="nom">Nom *</label>
+          <input id="nom" required autocomplete="name">
+        </div>
+        
+        <div class="ligne2">
+          <div class="champ">
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email">
+          </div>
+
+          <div class="champ">
+            <label for="tel">Téléphone</label>
+            <input id="tel" type="tel" autocomplete="tel">
+          </div>
+
+        </div>
+
+        <div class="champ">
+          <label for="msg">Votre message *</label>
+          <textarea id="msg" rows="5" required></textarea>
+        </div>
+
         <button class="btn btn-wa btn-block" type="submit">Envoyer sur WhatsApp</button>
+        
         <p class="note">Le message s'ouvre dans WhatsApp, il vous reste à l'envoyer.</p>
+
       </form>
+
     </div>
+    
   </main>
 
   <footer id="site-footer"></footer>
