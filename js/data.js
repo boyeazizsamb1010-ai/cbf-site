@@ -180,6 +180,43 @@ window.VEHICULES = [
       "peugeot-4008-10.jpg"
 
     ]
-}
+},
+
+  {
+    id: "toyota-chr-2020",
+    marque: "Toyota", 
+    modele: "C-HR 2.0L Elite Edition", 
+    annee: 2020,
+    categorie: "SUV / 4x4", 
+    etat: "Occasion",
+    prix: 6500000, 
+    ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 95613, 
+    carburant: "Essence", 
+    transmission: "Automatique",
+    couleur: "Blanc nacré", 
+    puissance: "2.0L · 126 kW", 
+    portes: 5, 
+    stock: 1,
+    vedette: false, 
+    teinte: "#f1efe9",
+
+    photos: [
+      "toyota-chr-1.jpg",
+      "toyota-chr-2.jpg",
+      "toyota-chr-3.jpg",
+      "toyota-chr-4.jpg",
+      "toyota-chr-5.jpg",
+      "toyota-chr-6.jpg",
+      "toyota-chr-7.jpg",
+      "toyota-chr-8.jpg",
+      "toyota-chr-9.jpg",
+      "toyota-chr-10.jpg"
+    ],
+
+    description: "Fabriqué en octobre 2020, mise en circulation en décembre 2020, 95 613 km au compteur. Moteur 2.0L de 126 kW, boîte automatique. Sièges en cuir noir, touches de bleu dans l'habitacle, grand écran multimédia, jantes bicolores 18 pouces et démarrage sans clé. Très bon état."
+  }
+
 ];
  
