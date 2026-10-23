@@ -156,6 +156,30 @@ window.VEHICULES = [
     ],
     
     description: "Moteur 1.5T de 130 kW, version intelligente. Sièges en cuir noir surpiqués orange, toit panoramique, grand écran incurvé, climatisation et prises USB à l'arrière. 17 129 km au compteur."
-  }
+  },
+
+  {
+    id: "peugeot-4008-deluxe",
+    nom: "Peugeot 4008 350THP Édition Deluxe",
+    annee: 2017,
+    kilometrage: "39 800 km",
+    moteur: "1.6L Turbo (123 kW)",
+    prix: "5.000.000 FCFA",
+    lieu: "Port autonome de Dakar",
+    description: "Édition Deluxe, intérieur cuir, toit panoramique, grand écran multimédia tactile, motorisation 1.6T performante et faible kilométrage.",
+    photos: [
+        "peugeot-4008-1.jpg",
+      "peugeot-4008-2.jpg",
+      "peugeot-4008-3.jpg",
+      "peugeot-4008-4.jpg",
+      "peugeot-4008-5.jpg",
+      "peugeot-4008-6.jpg",
+      "peugeot-4008-7.jpg",
+      "peugeot-4008-8.jpg",
+      "peugeot-4008-9.jpg",
+      "peugeot-4008-10.jpg"
+
+    ]
+}
 ];
  
