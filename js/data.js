@@ -252,6 +252,37 @@ window.VEHICULES = [
     ],
 
     description: "Modèle 2023, fabriqué en octobre 2022, 32 102 km au compteur. Moteur 1.5T de 108 kW, boîte automatique à double embrayage (DCT), 5 places. Intérieur cuir bordeaux matelassé, grand écran incurvé (instrumentation et multimédia), prises USB et aérations à l'arrière, prise 120 W. Très bon état."
+  },
+
+  {
+    id: "zotye-t700-2017",
+    marque: "Zotye",
+    modele: "T700 1.8T Premium Edition",
+    annee: 2017,
+    categorie: "SUV / 4x4",
+    etat: "Occasion",
+    prix: 3500000,
+    ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 85946,
+    carburant: "Essence",
+    transmission: "Automatique",
+    couleur: "Blanc",
+    puissance: "1.8T · 125 kW",
+    portes: 5,
+    stock: 1,
+    vedette: false,
+    teinte: "#ffffff",
+    photos: [
+      "zotye-t700-1.jpg",
+      "zotye-t700-2.jpg",
+      "zotye-t700-3.jpg",
+      "zotye-t700-4.jpg",
+      "zotye-t700-5.jpg",
+      "zotye-t700-6.jpg",
+      "zotye-t700-7.jpg"
+    ],
+    description: "Modèle Premium Edition immatriculé en 2017 (fabriqué en novembre 2017 d'après la plaque constructeur), 85 946 km au compteur. Moteur 1.8T de 125 kW, boîte automatique, 5 places. Véhicule en bon état général."
   }
 ];
  
