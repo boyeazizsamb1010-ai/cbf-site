@@ -216,7 +216,42 @@ window.VEHICULES = [
     ],
 
     description: "Fabriqué en octobre 2020, mise en circulation en décembre 2020, 95 613 km au compteur. Moteur 2.0L de 126 kW, boîte automatique. Sièges en cuir noir, touches de bleu dans l'habitacle, grand écran multimédia, jantes bicolores 18 pouces et démarrage sans clé. Très bon état."
-  }
+  },
 
+    {
+    id: "jetour-x70-plus-2023",
+    marque: "Jetour", 
+    modele: "X70 PLUS 1.5T DCT Brave PLUS", 
+    annee: 2023,
+    categorie: "SUV / 4x4", 
+    etat: "Occasion",
+    prix: 7500000, 
+    ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 32102, 
+    carburant: "Essence", 
+    transmission: "Automatique",
+    couleur: "Noir", 
+    puissance: "1.5T · 108 kW", 
+    portes: 5, 
+    stock: 1,
+    vedette: false, 
+    teinte: "#0e0f12",
+
+    photos: [
+      "jetour-x70-1.jpg",
+      "jetour-x70-2.jpg",
+      "jetour-x70-3.jpg",
+      "jetour-x70-4.jpg",
+      "jetour-x70-5.jpg",
+      "jetour-x70-6.jpg",
+      "jetour-x70-7.jpg",
+      "jetour-x70-8.jpg",
+      "jetour-x70-9.jpg",
+      "jetour-x70-10.jpg"
+    ],
+
+    description: "Modèle 2023, fabriqué en octobre 2022, 32 102 km au compteur. Moteur 1.5T de 108 kW, boîte automatique à double embrayage (DCT), 5 places. Intérieur cuir bordeaux matelassé, grand écran incurvé (instrumentation et multimédia), prises USB et aérations à l'arrière, prise 120 W. Très bon état."
+  }
 ];
  
