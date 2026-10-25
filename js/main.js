@@ -11,9 +11,24 @@
   };
 
   // ---------- Helpers globaux ----------
-  window.fmtPrix = n => new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " " + S.devise;
+  window.fmtPrix = n => !n ? "Prix sur demande" : new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " " + S.devise;
   window.fmtKm = n => new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " km";
   window.lienWA = msg => "https://wa.me/" + S.whatsapp + "?text=" + encodeURIComponent(msg);
+
+  // Rubriques : le type d'un article (voiture par défaut)
+  window.typeDe = v => v.type || "voiture";
+  window.rubriqueDe = v => S.rubriques.find(r => r.type === typeDe(v) && (!r.etat || r.etat === v.etat)) || S.rubriques.find(r => r.type === typeDe(v));
+  window.nomArticle = v => [v.marque, v.modele].filter(Boolean).join(" ");
+  window.ICONES = {
+    voiture: '<path d="M3 17h18M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v4H3z"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16.5" cy="17" r="1.6"/>',
+    moteur: '<path d="M4 9h3l2-2h6l2 2h3v7h-3l-2 2H9l-2-2H4z"/><path d="M2 12v2M22 12v2M12 4v3"/>',
+    tracteur: '<circle cx="7" cy="16" r="3.5"/><circle cx="18" cy="17.5" r="2"/><path d="M10.5 16H16M3.5 12.5V7h6l2 5h6.5l2 3.5"/>',
+    camion: '<path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/>',
+    machine: '<path d="M3 20V9l6 4V9l6 4V5h4v15z"/><path d="M3 20h18"/>',
+    arachide: '<path d="M9 3.5a3.5 3.5 0 0 1 5.5 4.5c-.8 1.2-.2 2.3.8 3a3.5 3.5 0 0 1-5.8 4c-1-.9-2.4-.4-3.2.4A3.5 3.5 0 0 1 4 9c1.2-1 1.6-2.2 2.4-3.4A3.5 3.5 0 0 1 9 3.5z"/>'
+  };
+  window.icone = n => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (ICONES[n] || ICONES.voiture) + "</svg>";
+  window.lienRubrique = r => "vehicules.html?type=" + r.type + (r.etat ? "&etat=" + r.etat : "");
 
   // Image par défaut quand le client n'a pas encore mis de photo
   window.imagePlaceholder = function (v, transparent) {
@@ -40,13 +55,13 @@
     const photo = photosDe(v)[0];
     return (
       '<a class="carte" href="vehicule.html?id=' + v.id + '">' +
-      '<div class="carte-img"><img src="' + photo + '" alt="' + v.marque + " " + v.modele + '" loading="lazy" onerror="imgSecours(this,\'' + v.id + '\')">' +
-      '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + v.etat + "</span></div>" +
+      '<div class="carte-img"><img src="' + photo + '" alt="' + nomArticle(v) + '" loading="lazy" onerror="imgSecours(this,\'' + v.id + '\')">' +
+      '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (v.etat || "") + "</span></div>" +
       '<div class="carte-corps"><span class="carte-cat">' + v.categorie + "</span>" +
-      '<span class="carte-titre">' + v.marque + " " + v.modele + " " + v.annee + "</span>" +
+      '<span class="carte-titre">' + nomArticle(v) + (v.annee ? " " + v.annee : "") + "</span>" +
       '<span class="carte-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</span>" +
       (v.notePrix ? '<span class="carte-meta" style="font-size:.78rem">' + v.notePrix + "</span>" : "") +
-      '<span class="carte-meta">' + v.carburant + " · " + v.transmission + (v.km ? " · " + fmtKm(v.km) : "") + "</span>" +
+      '<span class="carte-meta">' + [v.carburant, v.transmission, v.km ? fmtKm(v.km) : ""].filter(Boolean).join(" · ") + "</span>" +
       '<span class="carte-lien">Voir la fiche →</span></div></a>'
     );
   };
@@ -62,7 +77,7 @@
       '<a class="logo" href="index.html"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "<small>" + S.slogan + "</small></span></a>" +
       '<button class="burger" aria-label="Menu">' + ICO.menu + "</button>" +
       '<nav class="nav">' +
-      lien("index.html", "Accueil") + lien("vehicules.html", "Véhicules") + lien("a-propos.html", "À propos") + lien("contact.html", "Contact") +
+      lien("index.html", "Accueil") + lien("vehicules.html", "Catalogue") + lien("a-propos.html", "À propos") + lien("contact.html", "Contact") +
       '<a class="btn" href="' + lienWA("Bonjour, je souhaite prendre rendez-vous.") + '" target="_blank" rel="noopener">Prendre RDV</a>' +
       "</nav></div>";
     header.querySelector(".burger").addEventListener("click", () => header.querySelector(".nav").classList.toggle("ouvert"));
@@ -76,7 +91,8 @@
       '<div class="container"><div class="footer-grille">' +
       '<div><div class="logo" style="margin-bottom:12px"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "</span></div><p>" + S.slogan + ". Achat de véhicules et de machines en Chine, import-export de qualité.</p></div>" +
       '<div><h4>Navigation</h4><a href="index.html">Accueil</a><a href="vehicules.html">Véhicules</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></div>' +
-      '<div><h4>Services</h4><p>Achat professionnel</p><p>Confiance &amp; partenariat</p><p>Import – Export qualité</p></div>' +
+      '<div><h4>Nos produits</h4>' + S.rubriques.map(r => '<a href="' + lienRubrique(r) + '">' + r.nom + "</a>").join("") + "</div>" +
+      '' +
       '<div><h4>Contact</h4><a href="' + lienWA("Bonjour") + '" target="_blank" rel="noopener">WhatsApp : ' + S.whatsappAffiche + "</a>" +
       (S.email ? '<a href="mailto:' + S.email + '">' + S.email + "</a>" : "") + "<p>" + S.adresse + "</p>" + (S.horaires ? "<p>" + S.horaires + "</p>" : "") + "</div>" +
       '</div><div class="footer-bas">© ' + new Date().getFullYear() + " " + S.nom + ". Tous droits réservés.</div></div>";

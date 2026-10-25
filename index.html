@@ -1,89 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>{{nom}} (CBF) – Véhicules et machines depuis la Chine</title>
-
+  <title>{{nom}} (CBF) – Voitures, moteurs, camions et machines depuis la Chine</title>
   <meta name="description" content="Achat de véhicules et machines en Chine, import-export de qualité. Votre partenaire de confiance à Guangzhou. Contact WhatsApp.">
-
   <link rel="icon" href="images/logo-emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 <body>
   <header id="site-header" data-hero="true"></header>
 
   <section class="hero" id="hero" aria-label="Véhicules à la une"></section>
 
-  <section class="section">
-
+  <section class="section" id="rubriques-section">
     <div class="container">
-      <div class="eyebrow">Depuis Guangzhou</div>
-
-      <h2 style="margin-bottom:28px">Le bon véhicule, directement de Chine.</h2>
-      <div class="services">
-
-        <div class="service">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="20" r="1.5"/>
-            <circle cx="18" cy="20" r="1.5"/>
-            <path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg>
-          </div>
-          <h3>Achat professionnel</h3>
-          <p>Nous achetons pour vous en Chine : véhicules, camions et machines, au meilleur prix.</p>
-        </div>
-
-        <div class="service">
-          <div class="ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z"/>
-            </svg>
-          </div>
-
-          <h3>Confiance &amp; partenariat</h3>
-          <p>
-            Un partenaire sur place à Guangzhou, qui vous accompagne de la sélection à la livraison.
-          </p>
-        </div>
-
-        <div class="service">
-          <div class="ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>
-            </svg>
-          </div>
-
-          <h3>Import – Export qualité</h3>
-          <p>Expédition de la Chine vers le Sénégal et l'Afrique de l'Ouest, avec un suivi clair.</p>
-        </div>
-
-      </div>
+      <div class="eyebrow">Nos rubriques</div>
+      <h2 style="margin-bottom:8px">Que recherchez-vous ?</h2>
+      <p style="color:var(--gris);margin-bottom:28px">Choisissez une rubrique : voitures neuves ou d'occasion, moteurs, tracteurs, camions, machines.</p>
+      <div class="tuiles" id="rubriques"></div>
     </div>
-
   </section>
 
   <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="eyebrow">Depuis Guangzhou</div>
+      <h2 style="margin-bottom:28px">Le bon véhicule, directement de Chine.</h2>
+      <div class="services">
+        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg></div><h3>Achat professionnel</h3><p>Nous achetons pour vous en Chine : véhicules, camions et machines, au meilleur prix.</p></div>
+        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z"/></svg></div><h3>Confiance &amp; partenariat</h3><p>Un partenaire sur place à Guangzhou, qui vous accompagne de la sélection à la livraison.</p></div>
+        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3>Import – Export qualité</h3><p>Expédition de la Chine vers le Sénégal et l'Afrique de l'Ouest, avec un suivi clair.</p></div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section" style="padding-top:0">
     <div class="container">
       <div class="section-head">
         <div><div class="eyebrow">Sélection</div><h2>Véhicules à la une</h2></div>
         <a class="lien-fleche" href="vehicules.html">Voir tout le catalogue →</a>
       </div>
-
       <div class="grille" id="vedettes"></div>
     </div>
-
   </section>
 
   <section class="section" style="padding-top:0">
-
     <div class="container">
       <div class="cta">
         <h2>Votre partenaire de confiance en Chine.</h2>
@@ -91,7 +54,6 @@
         <a class="btn btn-wa" id="cta-wa" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
       </div>
     </div>
-    
   </section>
 
   <footer id="site-footer"></footer>

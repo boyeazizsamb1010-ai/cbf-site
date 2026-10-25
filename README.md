@@ -1,4 +1,4 @@
-# Cheikh Bay Fall (CBF) — site vitrine véhicules et machines
+# Cheikh Baye Fall Cargo (CBF) — site vitrine véhicules et machines
 
 Site statique (HTML / CSS / JavaScript), sans installation ni base de données.
 

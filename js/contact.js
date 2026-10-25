@@ -6,6 +6,9 @@
   const em = document.getElementById("c-email");
   if (S.email) { em.textContent = S.email; em.href = "mailto:" + S.email; } else { em.closest(".info-ligne").remove(); }
   document.getElementById("c-wa").textContent = S.whatsappAffiche;
+  const autres = S.autresNumeros || [];
+  if (autres.length) document.getElementById("c-autres").innerHTML = autres.map(a => a.label + " : " + '<a href="tel:' + a.num.replace(/\s/g, "") + '">' + a.num + "</a>").join("<br>");
+  else document.getElementById("c-autres-ligne").remove();
   document.getElementById("c-btn").href = lienWA("Bonjour,");
 
   document.getElementById("form").addEventListener("submit", e => {

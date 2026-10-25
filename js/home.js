@@ -6,7 +6,7 @@
 
   hero.innerHTML =
     slides.map((v, i) => {
-      const nom = v.marque + " " + v.modele;
+      const nom = nomArticle(v);
       return (
         '<div class="slide' + (i === 0 ? " actif" : "") + '">' +
         (v.photos && v.photos.length
@@ -14,10 +14,10 @@
           : '<img class="fond defaut" src="' + imagePlaceholder(v, true) + '" alt="' + nom + '">') +
         '<div class="container"><div class="slide-contenu">' +
         '<h1>' + nom + "</h1>" +
-        "<p>" + v.annee + " · " + v.carburant + " · " + v.transmission + " — " + fmtPrix(v.prix) + "</p>" +
+        "<p>" + [v.annee, v.carburant, v.transmission].filter(Boolean).join(" · ") + " — " + fmtPrix(v.prix) + "</p>" +
         '<div class="slide-actions">' +
         '<a class="btn btn-blanc" href="vehicule.html?id=' + v.id + '">Voir la fiche</a>' +
-        '<a class="btn btn-contour" target="_blank" rel="noopener" href="' + lienWA("Bonjour, je suis intéressé par le " + nom + " " + v.annee + ".") + '">Contacter sur WhatsApp</a>' +
+        '<a class="btn btn-contour" target="_blank" rel="noopener" href="' + lienWA("Bonjour, je suis intéressé par : " + nom + (v.annee ? " " + v.annee : "") + ".") + '">Contacter sur WhatsApp</a>' +
         "</div></div></div></div>"
       );
     }).join("") +
@@ -36,6 +36,14 @@
   function lancer() { clearInterval(timer); timer = setInterval(() => aller(cur + 1), 5500); }
   pts.forEach((p, i) => p.addEventListener("click", () => { aller(i); lancer(); }));
   lancer();
+
+  // Tuiles « Que recherchez-vous ? »
+  const S = window.SITE;
+  document.getElementById("rubriques").innerHTML = S.rubriques.map(r => {
+    const n = window.VEHICULES.filter(v => typeDe(v) === r.type && (!r.etat || v.etat === r.etat)).length;
+    return '<a class="tuile" href="' + lienRubrique(r) + '"><div class="ico">' + icone(r.icone) + "</div>" +
+      "<h3>" + r.nom + "</h3><p>" + r.texte + '</p><span class="tuile-nb' + (n ? "" : " bientot") + '">' + (n ? n + (n > 1 ? " articles" : " article") : "Bientôt") + " →</span></a>";
+  }).join("");
 
   document.getElementById("vedettes").innerHTML = window.VEHICULES.slice(0, 4).map(carteVehicule).join("");
   document.getElementById("cta-wa").href = lienWA("Bonjour, je souhaite des informations sur vos véhicules.");

@@ -1,27 +1,19 @@
-/**
- * Fichier de données des véhicules disponibles à la vente.
- * Chaque véhicule est représenté par un objet contenant ses caractéristiques et informations.
- */
+// ============================================================
+//  LISTE DES VÉHICULES — pour en ajouter un, copier un bloc
+//  Photos : mettre les fichiers dans images/vehicules/ et les
+//  lister dans "photos". Sans photo, une image par défaut s'affiche.
+//  "notePrix" (facultatif) : précision affichée sous le prix.
+// ============================================================
 window.VEHICULES = [
   {
-    id: "changan-unit-2022", // Identifiant unique du véhicule
-    marque: "Changan", // Marque du véhicule
-    modele: "UNI-T Premium Sports", // Modèle du véhicule
-    annee: 2022, // Année de fabrication
-    categorie: "SUV / 4x4", // Catégorie du véhicule
-    etat: "Occasion", // État du véhicule
-    prix: 7500000, // Prix du véhicule
-    ancienPrix: null, // Ancien prix du véhicule
+    id: "changan-unit-2022",
+    marque: "Changan", modele: "UNI-T Premium Sports", annee: 2022,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 7500000, ancienPrix: null,
     notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 18112, // Kilométrage du véhicule
-    carburant: "Essence", // Type de carburant
-    transmission: "Automatique", // Type de transmission
-    couleur: "Noir", // Couleur du véhicule
-    puissance: "1.5L · 133 kW", // Puissance du véhicule
-    portes: 5, stock: 1, // Nombre de portes et stock disponible
-    vedette: true, // Indique si le véhicule est en vedette
-    teinte: "#15161a", // Couleur de teinte pour l'affichage
-
+    km: 18112, carburant: "Essence", transmission: "Automatique",
+    couleur: "Noir", puissance: "1.5L · 133 kW", portes: 5, stock: 1,
+    vedette: true, teinte: "#15161a",
     photos: [
       "changan-unit-avant-1.jpg",
       "changan-unit-avant-2.jpg",
@@ -35,27 +27,15 @@ window.VEHICULES = [
     ],
     description: "Fabriquée en juillet 2022, 18 112 km au compteur. Look sportif avec kit carrosserie orange, sièges sport en cuir, toit panoramique et triple écran numérique. Très bon état."
   },
-
   {
     id: "haval-h6s",
-    marque: "Haval", 
-    modele: "H6S 2.0T", 
-    annee: 2019,
-    categorie: "SUV / 4x4", 
-    etat: "Occasion",
-    prix: 7500000, 
-    ancienPrix: null,
+    marque: "Haval", modele: "H6S 2.0T", annee: 2019,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 7500000, ancienPrix: null,
     notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 83397, 
-    carburant: "Essence", 
-    transmission: "Automatique",
-    couleur: "Blanc", 
-    puissance: "2.0T · 160 kW", 
-    portes: 5, 
-    stock: 1,
-    vedette: true, 
-    teinte: "#e8e8e8",
-
+    km: 83397, carburant: "Essence", transmission: "Automatique",
+    couleur: "Blanc", puissance: "2.0T · 160 kW", portes: 5, stock: 1,
+    vedette: true, teinte: "#e8e8e8",
     photos: [
       "haval-h6s-avant-1.jpg",
       "haval-h6s-avant-2.jpg",
@@ -71,31 +51,17 @@ window.VEHICULES = [
       "haval-h6s-interieur-angle.jpg",
       "haval-h6s-compteur.jpg"
     ],
-
     description: "Moteur 2.0T de 160 kW, silhouette de SUV coupé. Intérieur cuir noir avec touches jaunes, toit panoramique, instrumentation numérique et climatisation arrière. 83 397 km au compteur."
-
   },
-
   {
     id: "changan-unik-2022",
-    marque: "Changan", 
-    modele: "UNI-K iDD 1.5T", 
-    annee: 2022,
-    categorie: "SUV / 4x4", 
-    etat: "Occasion",
-    prix: 9800000, 
-    ancienPrix: null,
+    marque: "Changan", modele: "UNI-K iDD 1.5T", annee: 2022,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 9800000, ancienPrix: null,
     notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 19000, 
-    carburant: "Hybride rechargeable", 
-    transmission: "Automatique",
-    couleur: "Bleu clair", 
-    puissance: "1.5T hybride", 
-    portes: 5, 
-    stock: 1,
-    vedette: false, 
-    teinte: "#9db4d6",
-
+    km: 19000, carburant: "Hybride rechargeable", transmission: "Automatique",
+    couleur: "Bleu clair", puissance: "1.5T hybride", portes: 5, stock: 1,
+    vedette: false, teinte: "#9db4d6",
     photos: [
       "changan-unik-avant-1.jpg",
       "changan-unik-avant-2.jpg",
@@ -112,30 +78,17 @@ window.VEHICULES = [
       "changan-unik-commandes.jpg",
       "changan-unik-chargeur-sans-fil.jpg"
     ],
-
     description: "Hybride rechargeable (iDD) 1.5T, autonomie électrique annoncée de 130 km. Sièges en cuir clair, toit panoramique, audio Sony, triple écran numérique, chargeur de téléphone sans fil. Très bon état."
   },
-
   {
     id: "haval-beast-2022",
-    marque: "Haval", 
-    modele: "Beast 1.5T", 
-    annee: 2022,
-    categorie: "SUV / 4x4", 
-    etat: "Occasion",
-    prix: 7500000, 
-    ancienPrix: null,
+    marque: "Haval", modele: "Beast 1.5T", annee: 2022,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 7500000, ancienPrix: null,
     notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 17129, 
-    carburant: "Essence", 
-    transmission: "Automatique",
-    couleur: "Gris", 
-    puissance: "1.5T · 130 kW", 
-    portes: 5, 
-    stock: 1,
-    vedette: false, 
-    teinte: "#9a9c98",
-
+    km: 17129, carburant: "Essence", transmission: "Automatique",
+    couleur: "Gris", puissance: "1.5T · 130 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#9a9c98",
     photos: [
       "haval-beast-avant-1.jpg",
       "haval-beast-avant-2.jpg",
@@ -154,135 +107,34 @@ window.VEHICULES = [
       "haval-beast-console-arriere.jpg",
       "haval-beast-compteur.jpg"
     ],
-    
     description: "Moteur 1.5T de 130 kW, version intelligente. Sièges en cuir noir surpiqués orange, toit panoramique, grand écran incurvé, climatisation et prises USB à l'arrière. 17 129 km au compteur."
   },
-
   {
-    id: "peugeot-4008-deluxe",
-    nom: "Peugeot 4008 350THP Édition Deluxe",
-    annee: 2017,
-    kilometrage: "39 800 km",
-    moteur: "1.6L Turbo (123 kW)",
-    prix: "5.000.000 FCFA",
-    lieu: "Port autonome de Dakar",
-    description: "Édition Deluxe, intérieur cuir, toit panoramique, grand écran multimédia tactile, motorisation 1.6T performante et faible kilométrage.",
-    photos: [
-        "peugeot-4008-1.jpg",
-      "peugeot-4008-2.jpg",
-      "peugeot-4008-3.jpg",
-      "peugeot-4008-4.jpg",
-      "peugeot-4008-5.jpg",
-      "peugeot-4008-6.jpg",
-      "peugeot-4008-7.jpg",
-      "peugeot-4008-8.jpg",
-      "peugeot-4008-9.jpg",
-      "peugeot-4008-10.jpg"
-
-    ]
-},
-
-  {
-    id: "toyota-chr-2020",
-    marque: "Toyota", 
-    modele: "C-HR 2.0L Elite Edition", 
-    annee: 2020,
-    categorie: "SUV / 4x4", 
-    etat: "Occasion",
-    prix: 6500000, 
-    ancienPrix: null,
+    id: "peugeot-4008-2017",
+    marque: "Peugeot", modele: "4008 350THP Deluxe", annee: 2017,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 5000000, ancienPrix: null,
     notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 95613, 
-    carburant: "Essence", 
-    transmission: "Automatique",
-    couleur: "Blanc nacré", 
-    puissance: "2.0L · 126 kW", 
-    portes: 5, 
-    stock: 1,
-    vedette: false, 
-    teinte: "#f1efe9",
-
+    km: 39800, carburant: "Essence", transmission: "Automatique",
+    couleur: "Gris foncé", puissance: "1.6T · 123 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#4a4b4d",
     photos: [
-      "toyota-chr-1.jpg",
-      "toyota-chr-2.jpg",
-      "toyota-chr-3.jpg",
-      "toyota-chr-4.jpg",
-      "toyota-chr-5.jpg",
-      "toyota-chr-6.jpg",
-      "toyota-chr-7.jpg",
-      "toyota-chr-8.jpg",
-      "toyota-chr-9.jpg",
-      "toyota-chr-10.jpg"
+      "peugeot-4008-avant-1.jpg",
+      "peugeot-4008-avant-2.jpg",
+      "peugeot-4008-arriere-1.jpg",
+      "peugeot-4008-arriere-2.jpg",
+      "peugeot-4008-arriere-3.jpg",
+      "peugeot-4008-coffre.jpg",
+      "peugeot-4008-interieur-avant.jpg",
+      "peugeot-4008-interieur-cote.jpg",
+      "peugeot-4008-tableau-de-bord.jpg",
+      "peugeot-4008-ecran.jpg",
+      "peugeot-4008-volant.jpg",
+      "peugeot-4008-console.jpg",
+      "peugeot-4008-sieges-arriere-1.jpg",
+      "peugeot-4008-sieges-arriere-2.jpg",
+      "peugeot-4008-console-arriere.jpg"
     ],
-
-    description: "Fabriqué en octobre 2020, mise en circulation en décembre 2020, 95 613 km au compteur. Moteur 2.0L de 126 kW, boîte automatique. Sièges en cuir noir, touches de bleu dans l'habitacle, grand écran multimédia, jantes bicolores 18 pouces et démarrage sans clé. Très bon état."
-  },
-
-    {
-    id: "jetour-x70-plus-2023",
-    marque: "Jetour", 
-    modele: "X70 PLUS 1.5T DCT Brave PLUS", 
-    annee: 2023,
-    categorie: "SUV / 4x4", 
-    etat: "Occasion",
-    prix: 7500000, 
-    ancienPrix: null,
-    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 32102, 
-    carburant: "Essence", 
-    transmission: "Automatique",
-    couleur: "Noir", 
-    puissance: "1.5T · 108 kW", 
-    portes: 5, 
-    stock: 1,
-    vedette: false, 
-    teinte: "#0e0f12",
-
-    photos: [
-      "jetour-x70-1.jpg",
-      "jetour-x70-2.jpg",
-      "jetour-x70-3.jpg",
-      "jetour-x70-4.jpg",
-      "jetour-x70-5.jpg",
-      "jetour-x70-6.jpg",
-      "jetour-x70-7.jpg",
-      "jetour-x70-8.jpg",
-      "jetour-x70-9.jpg",
-      "jetour-x70-10.jpg"
-    ],
-
-    description: "Modèle 2023, fabriqué en octobre 2022, 32 102 km au compteur. Moteur 1.5T de 108 kW, boîte automatique à double embrayage (DCT), 5 places. Intérieur cuir bordeaux matelassé, grand écran incurvé (instrumentation et multimédia), prises USB et aérations à l'arrière, prise 120 W. Très bon état."
-  },
-
-  {
-    id: "zotye-t700-2017",
-    marque: "Zotye",
-    modele: "T700 1.8T Premium Edition",
-    annee: 2017,
-    categorie: "SUV / 4x4",
-    etat: "Occasion",
-    prix: 3500000,
-    ancienPrix: null,
-    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
-    km: 85946,
-    carburant: "Essence",
-    transmission: "Automatique",
-    couleur: "Blanc",
-    puissance: "1.8T · 125 kW",
-    portes: 5,
-    stock: 1,
-    vedette: false,
-    teinte: "#ffffff",
-    photos: [
-      "zotye-t700-1.jpg",
-      "zotye-t700-2.jpg",
-      "zotye-t700-3.jpg",
-      "zotye-t700-4.jpg",
-      "zotye-t700-5.jpg",
-      "zotye-t700-6.jpg",
-      "zotye-t700-7.jpg"
-    ],
-    description: "Modèle Premium Edition immatriculé en 2017 (fabriqué en novembre 2017 d'après la plaque constructeur), 85 946 km au compteur. Moteur 1.8T de 125 kW, boîte automatique, 5 places. Véhicule en bon état général."
+    description: "Peugeot 4008 350THP Édition Deluxe, moteur 1.6T de 123 kW. Sièges en cuir noir, toit panoramique, i-Cockpit avec instrumentation numérique, grand écran tactile, palettes au volant, climatisation et prise USB à l'arrière. 39 800 km."
   }
 ];
- 

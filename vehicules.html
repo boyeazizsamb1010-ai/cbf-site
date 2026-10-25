@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Véhicules – {{nom}}</title>
-  <meta name="description" content="Catalogue de véhicules neufs et d'occasion : recherchez par marque, modèle ou catégorie.">
+  <meta name="description" content="Voitures neuves et d'occasion, moteurs, tracteurs, camions et machines depuis la Chine.">
   <link rel="icon" href="images/logo-emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
   <main class="container">
     <div class="page-titre">
       <div class="eyebrow">Sur le site</div>
-      <h1>Tout le catalogue, en ligne.</h1>
-      <p>Trouvez le véhicule qu'il vous faut, puis contactez-nous sur WhatsApp.</p>
+      <h1 id="titre">Tout le catalogue, en ligne.</h1>
+      <p id="sous-titre"></p>
     </div>
 
     <div class="outils">
@@ -29,12 +29,12 @@
         <option value="annee-desc">Plus récents</option>
       </select>
     </div>
+    <div class="pastilles rubriques" id="rubriques"></div>
     <div class="pastilles" id="categories"></div>
-    <div class="pastilles" id="etats"></div>
 
     <p class="compteur" id="compteur"></p>
     <div class="grille" id="liste"></div>
-    <p class="vide" id="vide" hidden>Aucun véhicule ne correspond à votre recherche.</p>
+    <div class="vide" id="vide" hidden></div>
   </main>
 
   <footer id="site-footer"></footer>
