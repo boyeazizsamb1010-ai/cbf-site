@@ -188,5 +188,31 @@ window.VEHICULES = [
     vedette: false, teinte: "#a8481f",
     photos: ["peugeot-4008-elite-avant-1.jpg","peugeot-4008-elite-avant-2.jpg","peugeot-4008-elite-profil.jpg","peugeot-4008-elite-coffre.jpg","peugeot-4008-elite-interieur-avant.jpg","peugeot-4008-elite-tableau-de-bord.jpg","peugeot-4008-elite-volant.jpg","peugeot-4008-elite-compteur.jpg","peugeot-4008-elite-console.jpg","peugeot-4008-elite-interieur-cote.jpg","peugeot-4008-elite-sieges-arriere-1.jpg","peugeot-4008-elite-sieges-arriere-2.jpg"],
     description: "Peugeot 4008 350THP Édition Elite, moteur 1.6T de 123 kW, boîte automatique, 5 places. Carrosserie orange cuivré, sièges en cuir noir, i-Cockpit avec instrumentation numérique, grand écran tactile, toit panoramique et palettes au volant. 95 489 km au compteur."
+  },
+    {
+    id: "peugeot-5008-2017",
+    marque: "Peugeot", modele: "5008 380THP Elite 7 places", annee: 2017,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 6500000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 30000, carburant: "Essence", transmission: "Automatique",
+    couleur: "Vert foncé", puissance: "1.8T", portes: 5, stock: 1,
+    vedette: false, teinte: "#1f3a35",
+    specs: [["Places", "7"]],
+    photos: ["peugeot-5008-avant-1.jpg","peugeot-5008-profil.jpg","peugeot-5008-arriere.jpg","peugeot-5008-interieur-avant.jpg","peugeot-5008-tableau-de-bord.jpg","peugeot-5008-volant.jpg","peugeot-5008-ecran.jpg","peugeot-5008-console-arriere.jpg","peugeot-5008-sieges-3e-rangee.jpg"],
+    description: "Peugeot 5008 380THP Édition Elite, 7 places, modèle 2017 (sortie novembre 2017). Moteur 1.8T à boîte automatique, sièges en cuir noir, toit panoramique, i-Cockpit avec instrumentation numérique, grand écran tactile, palettes au volant et sorties de ventilation à l'arrière. Troisième rangée de deux sièges individuels."
+  },
+  {
+    id: "toyota-rav4-2020",
+    marque: "Toyota", modele: "RAV4 2.5L Hybride 4x4 CVT", annee: 2020,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 13000000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 4300, carburant: "Hybride", transmission: "Automatique",
+    couleur: "Blanc", puissance: "2.5L", portes: 5, stock: 1,
+    vedette: false, teinte: "#f1f1ef",
+    specs: [["Transmission intégrale", "4x4"]],
+    photos: ["toyota-rav4-arriere-1.jpg","toyota-rav4-arriere-2.jpg","toyota-rav4-interieur-avant.jpg","toyota-rav4-interieur-cote.jpg","toyota-rav4-sieges-arriere.jpg"],
+    description: "Toyota RAV4, version phare 2020 à double motorisation (hybride) 2.5L, boîte CVT et transmission intégrale 4x4. Presque neuf : seulement 4 300 km. Sièges en cuir noir, grand écran central, tapis de sol assortis et ventilation à l'arrière."
   }
 ];
