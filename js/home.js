@@ -10,7 +10,7 @@
       return (
         '<div class="slide' + (i === 0 ? " actif" : "") + '">' +
         (v.photos && v.photos.length
-          ? '<img class="fond" src="' + photosDe(v)[0] + '" alt="' + nom + '" onerror="imgSecours(this,\'' + v.id + '\')">'
+          ? '<img class="fond" ' + (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + ' src="' + photosDe(v)[0] + '" alt="' + nom + '" onerror="imgSecours(this,\'' + v.id + '\')">'
           : '<img class="fond defaut" src="' + imagePlaceholder(v, true) + '" alt="' + nom + '">') +
         '<div class="container"><div class="slide-contenu">' +
         '<h1>' + nom + "</h1>" +
@@ -41,10 +41,21 @@
   const S = window.SITE;
   document.getElementById("rubriques").innerHTML = S.rubriques.map(r => {
     const n = window.VEHICULES.filter(v => typeDe(v) === r.type && (!r.etat || v.etat === r.etat)).length;
-    return '<a class="tuile" href="' + lienRubrique(r) + '"><div class="ico">' + icone(r.icone) + "</div>" +
+    return '<a class="tuile apparait" href="' + lienRubrique(r) + '"><div class="ico">' + icone(r.icone) + "</div>" +
       "<h3>" + r.nom + "</h3><p>" + r.texte + '</p><span class="tuile-nb' + (n ? "" : " bientot") + '">' + (n ? n + (n > 1 ? " articles" : " article") : "Bientôt") + " →</span></a>";
   }).join("");
 
+  // FAQ (modifier les textes ici)
+  const faq = [
+    ["Que veut dire « prix une fois arrivé au Port autonome de Dakar » ?", "C'est le prix annoncé pour un article arrivé au Port autonome de Dakar. Pour le détail des frais après l'arrivée au port (dédouanement, transport), demandez-nous sur WhatsApp."],
+    ["Comment commander ou réserver ?", "Ouvrez la fiche de l'article, puis cliquez sur « Contacter sur WhatsApp ». Nous échangeons ensuite sur les détails et les étapes."],
+    ["Puis-je voir plus de photos ou une vidéo ?", "Oui. Nous sommes sur place à Guangzhou : demandez-nous des photos ou une vidéo de l'article sur WhatsApp."],
+    ["Vendez-vous autre chose que des voitures ?", "Oui : moteurs, tracteurs, camions, machines industrielles et décortiqueuses d'arachides. Si vous ne trouvez pas ce que vous cherchez, demandez-le nous."],
+    ["Comment vous joindre ?", "Par WhatsApp au " + S.whatsappAffiche + (S.horaires ? " (" + S.horaires.toLowerCase() + ")" : "") + ", ou depuis la page Contact."]
+  ];
+  document.getElementById("faq").innerHTML = faq.map(q => "<details><summary>" + q[0] + "</summary><p>" + q[1] + "</p></details>").join("");
+
   document.getElementById("vedettes").innerHTML = window.VEHICULES.slice(0, 4).map(carteVehicule).join("");
   document.getElementById("cta-wa").href = lienWA("Bonjour, je souhaite des informations sur vos véhicules.");
+  apparitions();
 })();

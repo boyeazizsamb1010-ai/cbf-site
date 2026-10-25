@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cbf-guangzhou.netlify.app/sitemap.xml

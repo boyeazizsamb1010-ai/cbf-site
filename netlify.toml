@@ -1,0 +1,4 @@
+# Netlify : à chaque "git push", génère les pages de partage (v/*.html) et le sitemap
+[build]
+  command = "node outils/generer-pages.js"
+  publish = "."

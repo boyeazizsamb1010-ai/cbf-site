@@ -22,3 +22,15 @@ Sans photo, une image par défaut s'affiche. Pour retirer un véhicule vendu, su
 
 ## Limites de la version 1
 Les véhicules sont dans un fichier : le client ne peut pas les modifier seul. La version 2 ajoutera un back-office avec base de données.
+
+## Photos (version rapide)
+Le site utilise des photos WebP en deux tailles : `images/vehicules/m/` (cartes) et `images/vehicules/g/` (fiche), plus `images/vehicules/og/` (aperçu WhatsApp de la 1re photo).
+Dans `js/data.js`, les noms de photos restent `xxx.jpg` : le site cherche automatiquement `m/xxx.webp` et `g/xxx.webp`.
+Pour préparer de nouvelles photos : `python3 outils/preparer-photos.py dossier_des_photos premiere-photo.jpg`.
+
+## Partage WhatsApp / Facebook
+À chaque mise en ligne, Netlify lance `outils/generer-pages.js` (réglé dans `netlify.toml`) : il crée une page par véhicule dans `v/` avec son aperçu (photo + prix), plus `sitemap.xml` et `robots.txt`.
+Adresse à partager pour un véhicule : `https://<le-site>/v/<id>.html`. Quand le nom de domaine sera acheté, changer `siteUrl` dans `js/config.js`.
+
+## Textes à faire confirmer par le client
+Section « Comment ça marche » (accueil) et « Questions fréquentes » : textes généraux à valider (délais, paiement, dédouanement). Les modifier dans `index.html` et `js/home.js`.

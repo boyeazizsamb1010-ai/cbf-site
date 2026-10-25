@@ -10,7 +10,7 @@
     || S.rubriques.find(r => r.type === params.get("type"));
   if (rDepart) rub = rDepart.cle;
 
-  const etat = { q: "", cat: "Toutes catégories", tri: "" };
+  const etat = { q: "", cat: "Toutes catégories", tri: "", budget: "", carb: "", fav: false };
   const dansRubrique = (v, r) => typeDe(v) === r.type && (!r.etat || v.etat === r.etat);
   const articlesDe = cle => cle === "tout" ? all : all.filter(v => dansRubrique(v, S.rubriques.find(r => r.cle === cle)));
 
@@ -22,7 +22,7 @@
       rub = b.dataset.cle; etat.cat = "Toutes catégories";
       const r = S.rubriques.find(x => x.cle === rub);
       history.replaceState(null, "", r ? lienRubrique(r) : "vehicules.html");
-      rubriques(); categories(); rendre();
+      rubriques(); categories(); carburants(); rendre();
     }));
   }
 
@@ -32,6 +32,15 @@
     zone.hidden = liste.length < 3;
     zone.innerHTML = liste.map(c => '<button class="pastille' + (etat.cat === c ? " actif" : "") + '">' + c + "</button>").join("");
     zone.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { etat.cat = b.textContent; categories(); rendre(); }));
+  }
+
+  function carburants() {
+    const sel = document.getElementById("carb");
+    const liste = [...new Set(articlesDe(rub).map(v => v.carburant).filter(Boolean))];
+    sel.hidden = liste.length < 2;
+    sel.innerHTML = '<option value="">Tous les carburants</option>' + liste.map(c => '<option value="' + c + '">' + c + "</option>").join("");
+    if (!liste.includes(etat.carb)) etat.carb = "";
+    sel.value = etat.carb;
   }
 
   function titre() {
@@ -46,6 +55,9 @@
     const q = etat.q.trim().toLowerCase();
     let r = articlesDe(rub).filter(v =>
       (etat.cat === "Toutes catégories" || v.categorie === etat.cat) &&
+      (!etat.carb || v.carburant === etat.carb) &&
+      (!etat.fav || favoris.est(v.id)) &&
+      (!etat.budget || (v.prix >= (+etat.budget.split("-")[0] || 0) && (!etat.budget.split("-")[1] || v.prix < +etat.budget.split("-")[1]))) &&
       (!q || (nomArticle(v) + " " + (v.annee || "") + " " + (v.couleur || "")).toLowerCase().includes(q))
     );
     if (etat.tri === "prix-asc") r.sort((a, b) => a.prix - b.prix);
@@ -53,18 +65,25 @@
     if (etat.tri === "annee-desc") r.sort((a, b) => (b.annee || 0) - (a.annee || 0));
     document.getElementById("liste").innerHTML = r.map(carteVehicule).join("");
     document.getElementById("compteur").textContent = r.length + (r.length > 1 ? " articles disponibles" : " article disponible");
+    document.getElementById("nb-fav").textContent = favoris.liste().length;
+    document.getElementById("btn-fav").classList.toggle("actif", etat.fav);
+    apparitions();
     const vide = document.getElementById("vide");
     vide.hidden = r.length > 0;
     const rb = S.rubriques.find(x => x.cle === rub);
-    const aucun = articlesDe(rub).length === 0;
+    const aucun = articlesDe(rub).length === 0 && !etat.fav;
     const sujet = rb ? rb.nom.toLowerCase() : "ce que vous cherchez";
     vide.innerHTML = aucun
       ? "<h2>Bientôt disponible</h2><p style=\"margin:8px 0 18px\">Nous n'avons pas encore de " + sujet + " en ligne, mais nous pouvons en trouver pour vous en Chine.</p>" +
         '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWA("Bonjour, je cherche : " + (rb ? rb.nom : "un article") + ".") + '">Demander sur WhatsApp</a>'
-      : "Aucun article ne correspond à votre recherche.";
+      : (etat.fav ? "Vous n'avez pas encore de favoris : touchez le cœur sur un article pour le garder ici." : "Aucun article ne correspond à votre recherche.");
   }
 
   document.getElementById("q").addEventListener("input", e => { etat.q = e.target.value; rendre(); });
   document.getElementById("tri").addEventListener("change", e => { etat.tri = e.target.value; rendre(); });
-  rubriques(); categories(); rendre();
+  document.getElementById("budget").addEventListener("change", e => { etat.budget = e.target.value; rendre(); });
+  document.getElementById("carb").addEventListener("change", e => { etat.carb = e.target.value; rendre(); });
+  document.getElementById("btn-fav").addEventListener("click", () => { etat.fav = !etat.fav; rendre(); });
+  document.addEventListener("favoris-change", () => { if (etat.fav) rendre(); else document.getElementById("nb-fav").textContent = favoris.liste().length; });
+  rubriques(); categories(); carburants(); rendre();
 })();

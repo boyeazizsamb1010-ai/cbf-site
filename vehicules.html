@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Véhicules – {{nom}}</title>
   <meta name="description" content="Voitures neuves et d'occasion, moteurs, tracteurs, camions et machines depuis la Chine.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cheikh Baye Fall Cargo">
+  <meta property="og:title" content="Catalogue – Cheikh Baye Fall Cargo">
+  <meta property="og:description" content="Voitures neuves et d'occasion, moteurs, tracteurs, camions et machines depuis la Chine.">
+  <meta property="og:url" content="https://cbf-guangzhou.netlify.app/vehicules.html">
+  <meta property="og:image" content="https://cbf-guangzhou.netlify.app/images/logo-complet.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/logo-emblem.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,6 +39,17 @@
       </select>
     </div>
     <div class="pastilles rubriques" id="rubriques"></div>
+    <div class="filtres">
+      <select id="budget" aria-label="Budget">
+        <option value="">Tous les prix</option>
+        <option value="0-6000000">Moins de 6 000 000 FCFA</option>
+        <option value="6000000-8000000">6 000 000 à 8 000 000 FCFA</option>
+        <option value="8000000-10000000">8 000 000 à 10 000 000 FCFA</option>
+        <option value="10000000-">Plus de 10 000 000 FCFA</option>
+      </select>
+      <select id="carb" aria-label="Carburant"></select>
+      <button class="pastille fav" id="btn-fav" type="button">♥ Mes favoris <span class="nb" id="nb-fav"></span></button>
+    </div>
     <div class="pastilles" id="categories"></div>
 
     <p class="compteur" id="compteur"></p>

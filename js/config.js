@@ -12,6 +12,8 @@ window.SITE = {
   adresse: "Guangzhou, Chine",
   horaires: "Tous les jours : 9h – 23h",
   devise: "FCFA",
+  // Adresse du site (à changer quand le nom de domaine sera acheté) : sert aux aperçus de partage
+  siteUrl: "https://cbf-guangzhou.netlify.app",
   // Autres numéros du flyer du client (affichés sur la page Contact)
   autresNumeros: [
     { label: "Chine", num: "+86 195 7486 4821" },

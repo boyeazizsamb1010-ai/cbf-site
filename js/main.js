@@ -30,6 +30,42 @@
   window.icone = n => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (ICONES[n] || ICONES.voiture) + "</svg>";
   window.lienRubrique = r => "vehicules.html?type=" + r.type + (r.etat ? "&etat=" + r.etat : "");
 
+  // ----- Favoris (gardés dans le navigateur du visiteur) -----
+  window.favoris = {
+    liste() { try { return JSON.parse(localStorage.getItem("cbf-favoris") || "[]"); } catch (e) { return []; } },
+    est(id) { return this.liste().includes(id); },
+    basculer(id) {
+      let l = this.liste(); l = l.includes(id) ? l.filter(x => x !== id) : l.concat(id);
+      try { localStorage.setItem("cbf-favoris", JSON.stringify(l)); } catch (e) {}
+      document.dispatchEvent(new CustomEvent("favoris-change"));
+      return l.includes(id);
+    }
+  };
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-fav]");
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const actif = favoris.basculer(b.dataset.fav);
+    document.querySelectorAll('[data-fav="' + b.dataset.fav + '"]').forEach(x => { x.classList.toggle("actif", actif); x.setAttribute("aria-pressed", actif); });
+  });
+
+  // ----- Partage : feuille de partage du téléphone, sinon WhatsApp -----
+  window.lienPartage = v => location.origin + "/v/" + v.id + ".html";
+  window.partager = function (v) {
+    const titre = nomArticle(v) + (v.annee ? " " + v.annee : "") + (v.prix ? " – " + fmtPrix(v.prix) : "");
+    const url = lienPartage(v);
+    if (navigator.share) { navigator.share({ title: titre, text: titre, url }).catch(() => {}); return; }
+    window.open("https://wa.me/?text=" + encodeURIComponent(titre + "\n" + url), "_blank", "noopener");
+  };
+
+  // ----- Apparition douce des blocs au défilement -----
+  window.apparitions = function (racine) {
+    const els = (racine || document).querySelectorAll(".apparait:not(.vu)");
+    if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("vu")); return; }
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("vu"); io.unobserve(en.target); } }), { threshold: .12 });
+    els.forEach(e => io.observe(e));
+  };
+
   // Image par défaut quand le client n'a pas encore mis de photo
   window.imagePlaceholder = function (v, transparent) {
     const c = v.teinte || "#9aa7a0";
@@ -43,7 +79,11 @@
       '<circle cx="570" cy="420" r="52" fill="#1b1f1d"/><circle cx="570" cy="420" r="24" fill="#aab3ae"/></svg>';
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   };
-  window.photosDe = v => (v.photos && v.photos.length ? v.photos.map(p => "images/vehicules/" + p) : [window.imagePlaceholder(v)]);
+  // Photos : "g" = grande (fiche), "m" = petite (cartes, miniatures). Les noms dans data.js peuvent garder .jpg
+  const base = p => p.replace(/\.[a-z0-9]+$/i, "");
+  window.photosDe = v => (v.photos && v.photos.length ? v.photos.map(p => "images/vehicules/g/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
+  window.miniDe = v => (v.photos && v.photos.length ? v.photos.map(p => "images/vehicules/m/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
+  window.ogDe = v => (v.photos && v.photos.length ? "images/vehicules/og/" + base(v.photos[0]) + ".jpg" : "images/logo-complet.jpg");
   // si une photo est introuvable, on remet l'image par défaut
   window.imgSecours = (img, id) => {
     const v = window.VEHICULES.find(x => x.id === id);
@@ -52,10 +92,11 @@
   };
 
   window.carteVehicule = function (v) {
-    const photo = photosDe(v)[0];
+    const photo = miniDe(v)[0];
     return (
       '<a class="carte" href="vehicule.html?id=' + v.id + '">' +
-      '<div class="carte-img"><img src="' + photo + '" alt="' + nomArticle(v) + '" loading="lazy" onerror="imgSecours(this,\'' + v.id + '\')">' +
+      '<div class="carte-img"><img src="' + photo + '" alt="' + nomArticle(v) + '" loading="lazy" decoding="async" onerror="imgSecours(this,\'' + v.id + '\')">' +
+      '<button class="coeur' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" aria-label="Ajouter aux favoris" aria-pressed="' + favoris.est(v.id) + '"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.4 5c2 0 3.6 1.1 4.6 2.7C12 6.1 13.600 5 15.600 5 19 5 20.800 8.600 19.500 11.800 17.500 16.400 12 21 12 21z"/></svg></button>' +
       '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (v.etat || "") + "</span></div>" +
       '<div class="carte-corps"><span class="carte-cat">' + v.categorie + "</span>" +
       '<span class="carte-titre">' + nomArticle(v) + (v.annee ? " " + v.annee : "") + "</span>" +
