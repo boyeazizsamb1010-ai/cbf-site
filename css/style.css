@@ -288,3 +288,12 @@ a { color: inherit; text-decoration: none; }
   .miniatures { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; }
   .miniatures button { flex: 0 0 76px; scroll-snap-align: start; }
 }
+
+/* Correctif mobile : la fiche ne doit jamais dépasser la largeur de l'écran */
+.fiche > *, .fiche-infos, .fiche-galerie { min-width: 0; }
+@media (max-width: 860px) {
+  .fiche { grid-template-columns: minmax(0, 1fr); }
+  .miniatures { max-width: 100%; }
+  .fiche-infos h1 { overflow-wrap: anywhere; }
+}
+html, body { overflow-x: clip; }
