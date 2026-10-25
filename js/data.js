@@ -163,5 +163,30 @@ window.VEHICULES = [
       "jetour-x70-porte-passager.jpg"
     ],
     description: "Jetour X70 PLUS 1.5T à boîte DCT, 5 places, modèle 2023. Sièges et planche de bord en cuir rouge bordeaux, grand écran numérique, climatisation et prise 120 W. 32 102 km au compteur."
+  },
+    {
+    id: "jetour-x90-pro-2024",
+    marque: "Jetour", modele: "X90 PRO 1.6T DCT Deluxe 7 places", annee: 2024,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 12000000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 22000, carburant: "Essence", transmission: "Automatique",
+    couleur: "Blanc", puissance: "1.6T · 140 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#e9e9ea",
+    specs: [["Places", "7"]],
+    photos: ["jetour-x90-avant-1.jpg","jetour-x90-avant-2.jpg","jetour-x90-profil.jpg","jetour-x90-arriere.jpg","jetour-x90-interieur-avant.jpg","jetour-x90-tableau-de-bord.jpg","jetour-x90-console.jpg","jetour-x90-sieges-arriere.jpg","jetour-x90-sieges-3e-rangee.jpg","jetour-x90-coffre.jpg"],
+    description: "Jetour X90 PRO 1.6T à boîte DCT, édition Deluxe 7 places, modèle 2024 (sortie juin 2024). Presque neuf : 22 000 km. Sièges en cuir marron sur trois rangées, toit panoramique, grands écrans numériques et grand coffre."
+  },
+  {
+    id: "peugeot-4008-elite-2017",
+    marque: "Peugeot", modele: "4008 350THP Elite", annee: 2017,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 6000000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 95489, carburant: "Essence", transmission: "Automatique",
+    couleur: "Orange cuivré", puissance: "1.6T · 123 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#a8481f",
+    photos: ["peugeot-4008-elite-avant-1.jpg","peugeot-4008-elite-avant-2.jpg","peugeot-4008-elite-profil.jpg","peugeot-4008-elite-coffre.jpg","peugeot-4008-elite-interieur-avant.jpg","peugeot-4008-elite-tableau-de-bord.jpg","peugeot-4008-elite-volant.jpg","peugeot-4008-elite-compteur.jpg","peugeot-4008-elite-console.jpg","peugeot-4008-elite-interieur-cote.jpg","peugeot-4008-elite-sieges-arriere-1.jpg","peugeot-4008-elite-sieges-arriere-2.jpg"],
+    description: "Peugeot 4008 350THP Édition Elite, moteur 1.6T de 123 kW, boîte automatique, 5 places. Carrosserie orange cuivré, sièges en cuir noir, i-Cockpit avec instrumentation numérique, grand écran tactile, toit panoramique et palettes au volant. 95 489 km au compteur."
   }
 ];
