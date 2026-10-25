@@ -5,7 +5,7 @@
   const v = window.VEHICULES.find(x => x.id === id);
 
   if (!v) {
-    zone.innerHTML = '<div class="vide"><h2>Véhicule introuvable</h2><p style="margin:10px 0 20px">Il a peut-être été vendu.</p><a class="btn btn-vert" href="vehicules.html">Retour au catalogue</a></div>';
+    zone.innerHTML = '<div class="vide"><h2>' + t("fiche.notfound") + '</h2><p style="margin:10px 0 20px">' + t("fiche.sold") + '</p><a class="btn btn-vert" href="vehicules.html">' + t("fiche.back") + '</a></div>';
     return;
   }
 
@@ -14,47 +14,47 @@
   const rub = rubriqueDe(v);
   document.title = nomAn + " – " + window.SITE.nom;
   const grandes = photosDe(v), petites = miniDe(v);
-  const msgWA = "Bonjour, je suis intéressé par : " + nomAn + (v.prix ? " à " + fmtPrix(v.prix) : "") + ". Est-il toujours disponible ?";
+  const msgWA = t("wa.interest", { n: nomAn, p: v.prix ? t("wa.at", { prix: fmtPrix(v.prix) }) : "" });
   const lienWhats = lienWA(msgWA);
 
   // lignes du tableau : seulement celles qui existent ; "specs" (facultatif) : [["Capacité", "5 t"]]
   const lignes = [
-    ["Marque", v.marque], ["Modèle", v.modele], ["Année", v.annee],
-    ["Kilométrage", v.km === undefined ? "" : (v.km ? fmtKm(v.km) : "0 km")], ["Carburant", v.carburant],
-    ["Transmission", v.transmission], ["Couleur", v.couleur],
-    ["Puissance", v.puissance], ["Portes", v.portes], ["État", v.etat]
-  ].concat(v.specs || []).filter(l => l[1] !== undefined && l[1] !== "" && l[1] !== null);
-  const points = [v.annee, v.km ? fmtKm(v.km) : "", v.carburant, v.transmission].filter(Boolean);
+    [t("lab.marque"), v.marque], [t("lab.modele"), v.modele], [t("lab.annee"), v.annee],
+    [t("lab.km"), v.km === undefined ? "" : (v.km ? fmtKm(v.km) : "0 km")], [t("lab.carburant"), tv(v.carburant)],
+    [t("lab.transmission"), tv(v.transmission)], [t("lab.couleur"), tv(v.couleur)],
+    [t("lab.puissance"), tp(v.puissance)], [t("lab.portes"), v.portes], [t("lab.etat"), tv(v.etat)]
+  ].concat((v.specs || []).map(s => [tv(s[0]), tv(s[1])])).filter(l => l[1] !== undefined && l[1] !== "" && l[1] !== null);
+  const points = [v.annee, v.km ? fmtKm(v.km) : "", tv(v.carburant), tv(v.transmission)].filter(Boolean);
 
   const ICO_PARTAGE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.600 13.500l6.800 4M15.400 6.500l-6.800 4"/></svg>';
   const ICO_COEUR = '<svg viewBox="0 0 24 24"><path d="M12 21s-7.500-4.600-9.500-9.200C1.200 8.600 3 5 6.400 5c2 0 3.600 1.100 4.600 2.700C12 6.100 13.600 5 15.600 5 19 5 20.800 8.600 19.500 11.800 17.500 16.400 12 21 12 21z"/></svg>';
 
   zone.innerHTML =
-    '<nav class="fil"><a href="index.html">Accueil</a> / <a href="vehicules.html">Catalogue</a> / ' + (rub ? '<a href="' + lienRubrique(rub) + '">' + rub.nom + "</a> / " : "") + nom + "</nav>" +
+    '<nav class="fil"><a href="index.html">' + t("nav.home") + '</a> / <a href="vehicules.html">' + t("nav.catalog") + '</a> / ' + (rub ? '<a href="' + lienRubrique(rub) + '">' + rubNom(rub) + "</a> / " : "") + nom + "</nav>" +
     '<div class="fiche"><div>' +
     '<div class="galerie-principale" id="gp"><img id="grande" src="' + grandes[0] + '" alt="' + nomAn + '" fetchpriority="high" onerror="imgSecours(this,\'' + v.id + '\')">' +
-    (grandes.length > 1 ? '<button class="gp-nav prec" aria-label="Photo précédente">‹</button><button class="gp-nav suiv" aria-label="Photo suivante">›</button><span class="gp-compte" id="gp-compte"></span>' : "") +
-    '<span class="gp-zoom">Agrandir</span></div>' +
+    (grandes.length > 1 ? '<button class="gp-nav prec" aria-label="' + t("photo.prev") + '">‹</button><button class="gp-nav suiv" aria-label="' + t("photo.next") + '">›</button><span class="gp-compte" id="gp-compte"></span>' : "") +
+    '<span class="gp-zoom">' + t("zoom") + '</span></div>' +
     (grandes.length > 1
-      ? '<div class="miniatures">' + petites.map((p, i) => '<button class="' + (i === 0 ? "actif" : "") + '" data-i="' + i + '" aria-label="Photo ' + (i + 1) + '"><img src="' + p + '" alt="" loading="lazy" decoding="async"></button>').join("") + "</div>"
+      ? '<div class="miniatures">' + petites.map((p, i) => '<button class="' + (i === 0 ? "actif" : "") + '" data-i="' + i + '" aria-label="' + t("photo.n", { n: i + 1 }) + '"><img src="' + p + '" alt="" loading="lazy" decoding="async"></button>').join("") + "</div>"
       : "") +
     '</div><div class="fiche-infos">' +
-    '<div class="carte-cat">' + v.categorie + "</div>" +
+    '<div class="carte-cat">' + tv(v.categorie) + "</div>" +
     "<h1>" + nomAn + "</h1>" +
     '<div class="fiche-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</div>" +
-    (v.notePrix ? '<div class="carte-meta" style="margin-bottom:6px">' + v.notePrix + "</div>" : "") +
+    (v.notePrix ? '<div class="carte-meta" style="margin-bottom:6px">' + tv(v.notePrix) + "</div>" : "") +
     (points.length ? '<div class="points-cles">' + points.map(p => "<span>" + p + "</span>").join("") + "</div>" : "") +
-    (v.stock ? '<div class="stock">✓ En stock (' + v.stock + " disponible" + (v.stock > 1 ? "s" : "") + ")</div>" : "") +
-    '<p class="fiche-desc">' + v.description + "</p>" +
+    (v.stock ? '<div class="stock">' + (v.stock > 1 ? t("stock.n", { n: v.stock }) : t("stock.1")) + "</div>" : "") +
+    '<p class="fiche-desc">' + descDe(v) + "</p>" +
     '<div class="fiche-actions">' +
-    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">Contacter sur WhatsApp</a>' +
-    '<button class="btn btn-ligne" id="btn-partager" type="button">' + ICO_PARTAGE + " Partager</button>" +
-    '<button class="btn btn-ligne coeur-btn' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" type="button" aria-pressed="' + favoris.est(v.id) + '">' + ICO_COEUR + " Favori</button></div>" +
-    '<div class="carac"><h3>Caractéristiques</h3>' +
+    '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">' + t("btn.wa") + '</a>' +
+    '<button class="btn btn-ligne" id="btn-partager" type="button">' + ICO_PARTAGE + " " + t("share") + "</button>" +
+    '<button class="btn btn-ligne coeur-btn' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" type="button" aria-pressed="' + favoris.est(v.id) + '">' + ICO_COEUR + " " + t("favorite") + "</button></div>" +
+    '<div class="carac"><h3>' + t("specs") + '</h3>' +
     lignes.map(l => "<div><span>" + l[0] + "</span><span>" + l[1] + "</span></div>").join("") +
     "</div></div></div>" +
     '<div id="similaires"></div>' +
-    '<div class="barre-wa"><div><strong>' + fmtPrix(v.prix) + '</strong><small>' + nom + '</small></div><a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">WhatsApp</a></div>';
+    '<div class="barre-wa"><div><strong>' + fmtPrix(v.prix) + '</strong><small>' + nom + '</small></div><a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">' + t("bar.wa") + '</a></div>';
 
   // ---------- Galerie ----------
   const grande = document.getElementById("grande");
@@ -79,8 +79,8 @@
   const lb = { ouvert: false };
   const boite = document.createElement("div");
   boite.className = "lightbox"; boite.hidden = true;
-  boite.innerHTML = '<button class="lb-fermer" aria-label="Fermer">×</button>' +
-    (grandes.length > 1 ? '<button class="lb-nav prec" aria-label="Précédente">‹</button><button class="lb-nav suiv" aria-label="Suivante">›</button>' : "") +
+  boite.innerHTML = '<button class="lb-fermer" aria-label="' + t("lb.close") + '">×</button>' +
+    (grandes.length > 1 ? '<button class="lb-nav prec" aria-label="' + t("lb.prev") + '">‹</button><button class="lb-nav suiv" aria-label="' + t("lb.next") + '">›</button>' : "") +
     '<img alt=""><span class="lb-compte"></span>';
   document.body.appendChild(boite);
   const lbImg = boite.querySelector("img");
@@ -118,6 +118,6 @@
   const sim = (memes.length ? memes.concat(autres.filter(x => !memes.includes(x))) : autres).slice(0, 4);
   if (sim.length) {
     document.getElementById("similaires").innerHTML =
-      '<section class="similaires"><h2>Vous aimerez aussi</h2><div class="grille">' + sim.map(carteVehicule).join("") + "</div></section>";
+      '<section class="similaires"><h2>' + t("similar") + '</h2><div class="grille">' + sim.map(carteVehicule).join("") + "</div></section>";
   }
 })();

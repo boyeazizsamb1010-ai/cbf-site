@@ -22,25 +22,25 @@
 <body>
   <header id="site-header" data-hero="true"></header>
 
-  <section class="hero" id="hero" aria-label="Véhicules à la une"></section>
+  <section class="hero" id="hero" data-i18n-aria="hero.aria" aria-label="Véhicules à la une"></section>
 
   <section class="section" id="rubriques-section">
     <div class="container">
-      <div class="eyebrow">Nos rubriques</div>
-      <h2 style="margin-bottom:8px">Que recherchez-vous ?</h2>
-      <p style="color:var(--gris);margin-bottom:28px">Choisissez une rubrique : voitures neuves ou d'occasion, moteurs, tracteurs, camions, machines.</p>
+      <div data-i18n="home.eyebrow1" class="eyebrow">Nos rubriques</div>
+      <h2 data-i18n="home.h1" style="margin-bottom:8px">Que recherchez-vous ?</h2>
+      <p data-i18n="home.p1" style="color:var(--gris);margin-bottom:28px">Choisissez une rubrique : voitures neuves ou d'occasion, moteurs, tracteurs, camions, machines.</p>
       <div class="tuiles" id="rubriques"></div>
     </div>
   </section>
 
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="eyebrow">Depuis Guangzhou</div>
-      <h2 style="margin-bottom:28px">Le bon véhicule, directement de Chine.</h2>
+      <div data-i18n="home.eyebrow2" class="eyebrow">Depuis Guangzhou</div>
+      <h2 data-i18n="home.h2" style="margin-bottom:28px">Le bon véhicule, directement de Chine.</h2>
       <div class="services">
-        <div class="service apparait"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg></div><h3>Achat professionnel</h3><p>Nous achetons pour vous en Chine : véhicules, camions et machines, au meilleur prix.</p></div>
-        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z"/></svg></div><h3>Confiance &amp; partenariat</h3><p>Un partenaire sur place à Guangzhou, qui vous accompagne de la sélection à la livraison.</p></div>
-        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3>Import – Export qualité</h3><p>Expédition de la Chine vers le Sénégal et l'Afrique de l'Ouest, avec un suivi clair.</p></div>
+        <div class="service apparait"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg></div><h3 data-i18n="svc1.t">Achat professionnel</h3><p data-i18n="svc1.p">Nous achetons pour vous en Chine : véhicules, camions et machines, au meilleur prix.</p></div>
+        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6c-2.3 4.6-9.3 9-9.3 9z"/></svg></div><h3 data-i18n="svc2.t">Confiance &amp; partenariat</h3><p data-i18n="svc2.p">Un partenaire sur place à Guangzhou, qui vous accompagne de la sélection à la livraison.</p></div>
+        <div class="service"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3 data-i18n="svc3.t">Import – Export qualité</h3><p data-i18n="svc3.p">Expédition de la Chine vers le Sénégal et l'Afrique de l'Ouest, avec un suivi clair.</p></div>
       </div>
     </div>
   </section>
@@ -48,8 +48,8 @@
   <section class="section" style="padding-top:0">
     <div class="container">
       <div class="section-head">
-        <div><div class="eyebrow">Sélection</div><h2>Véhicules à la une</h2></div>
-        <a class="lien-fleche" href="vehicules.html">Voir tout le catalogue →</a>
+        <div><div data-i18n="home.eyebrow3" class="eyebrow">Sélection</div><h2 data-i18n="home.h3">Véhicules à la une</h2></div>
+        <a data-i18n="home.all" class="lien-fleche" href="vehicules.html">Voir tout le catalogue →</a>
       </div>
       <div class="grille" id="vedettes"></div>
     </div>
@@ -57,21 +57,21 @@
 
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="eyebrow">Simple et clair</div>
-      <h2 style="margin-bottom:32px">Comment ça marche ?</h2>
+      <div data-i18n="home.eyebrow4" class="eyebrow">Simple et clair</div>
+      <h2 data-i18n="home.h4" style="margin-bottom:32px">Comment ça marche ?</h2>
       <div class="etapes">
-        <div class="etape apparait"><h3>Vous choisissez</h3><p>Parcourez le catalogue, ou dites-nous sur WhatsApp ce que vous cherchez.</p></div>
-        <div class="etape apparait"><h3>Nous vous répondons</h3><p>Photos, vidéos et détails de l'article, directement sur WhatsApp.</p></div>
-        <div class="etape apparait"><h3>Nous achetons en Chine</h3><p>Nous achetons et préparons votre article depuis Guangzhou.</p></div>
-        <div class="etape apparait"><h3>Livraison à Dakar</h3><p>Expédition vers le Port autonome de Dakar, avec un suivi clair.</p></div>
+        <div class="etape apparait"><h3 data-i18n="st1.t">Vous choisissez</h3><p data-i18n="st1.p">Parcourez le catalogue, ou dites-nous sur WhatsApp ce que vous cherchez.</p></div>
+        <div class="etape apparait"><h3 data-i18n="st2.t">Nous vous répondons</h3><p data-i18n="st2.p">Photos, vidéos et détails de l'article, directement sur WhatsApp.</p></div>
+        <div class="etape apparait"><h3 data-i18n="st3.t">Nous achetons en Chine</h3><p data-i18n="st3.p">Nous achetons et préparons votre article depuis Guangzhou.</p></div>
+        <div class="etape apparait"><h3 data-i18n="st4.t">Livraison à Dakar</h3><p data-i18n="st4.p">Expédition vers le Port autonome de Dakar, avec un suivi clair.</p></div>
       </div>
     </div>
   </section>
 
   <section class="section" style="padding-top:0">
     <div class="container">
-      <div class="eyebrow">Questions fréquentes</div>
-      <h2 style="margin-bottom:24px">Vos questions, nos réponses</h2>
+      <div data-i18n="home.eyebrow5" class="eyebrow">Questions fréquentes</div>
+      <h2 data-i18n="home.h5" style="margin-bottom:24px">Vos questions, nos réponses</h2>
       <div class="faq" id="faq"></div>
     </div>
   </section>
@@ -79,9 +79,9 @@
   <section class="section" style="padding-top:0">
     <div class="container">
       <div class="cta">
-        <h2>Votre partenaire de confiance en Chine.</h2>
-        <p>Écrivez-nous sur WhatsApp au +221 71 126 14 83 : on vous répond rapidement.</p>
-        <a class="btn btn-wa" id="cta-wa" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+        <h2 data-i18n="cta.h">Votre partenaire de confiance en Chine.</h2>
+        <p data-i18n="cta.p">Écrivez-nous sur WhatsApp au +221 71 126 14 83 : on vous répond rapidement.</p>
+        <a data-i18n="cta.btn" class="btn btn-wa" id="cta-wa" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
       </div>
     </div>
   </section>
@@ -90,6 +90,8 @@
 
   <script src="js/config.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/descriptions.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/home.js"></script>
 </body>

@@ -1,15 +1,15 @@
 // Contact : affiche les infos et envoie le formulaire vers WhatsApp
 (function () {
   const S = window.SITE;
-  document.getElementById("c-adresse").textContent = S.adresse;
-  if (S.horaires) document.getElementById("c-horaires").textContent = S.horaires; else document.getElementById("c-horaires").closest(".info-ligne").remove();
+  document.getElementById("c-adresse").textContent = t("address");
+  if (S.horaires) document.getElementById("c-horaires").textContent = t("hours"); else document.getElementById("c-horaires").closest(".info-ligne").remove();
   const em = document.getElementById("c-email");
   if (S.email) { em.textContent = S.email; em.href = "mailto:" + S.email; } else { em.closest(".info-ligne").remove(); }
   document.getElementById("c-wa").textContent = S.whatsappAffiche;
   const autres = S.autresNumeros || [];
-  if (autres.length) document.getElementById("c-autres").innerHTML = autres.map(a => a.label + " : " + '<a href="tel:' + a.num.replace(/\s/g, "") + '">' + a.num + "</a>").join("<br>");
+  if (autres.length) document.getElementById("c-autres").innerHTML = autres.map(a => tv(a.label) + " : " + '<a href="tel:' + a.num.replace(/\s/g, "") + '">' + a.num + "</a>").join("<br>");
   else document.getElementById("c-autres-ligne").remove();
-  document.getElementById("c-btn").href = lienWA("Bonjour,");
+  document.getElementById("c-btn").href = lienWA(t("wa.hello2"));
 
   document.getElementById("form").addEventListener("submit", e => {
     e.preventDefault();
@@ -21,7 +21,7 @@
     }
     const email = document.getElementById("email").value.trim();
     const tel = document.getElementById("tel").value.trim();
-    const texte = "Bonjour, je suis " + nom.value.trim() + "." + (tel ? "\nTéléphone : " + tel : "") + (email ? "\nEmail : " + email : "") + "\n\n" + msg.value.trim();
+    const texte = t("wa.iam", { nom: nom.value.trim() }) + (tel ? t("wa.tel", { x: tel }) : "") + (email ? t("wa.email", { x: email }) : "") + "\n\n" + msg.value.trim();
     window.open(lienWA(texte), "_blank", "noopener");
   });
 })();

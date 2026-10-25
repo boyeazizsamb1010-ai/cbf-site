@@ -14,15 +14,15 @@
           : '<img class="fond defaut" src="' + imagePlaceholder(v, true) + '" alt="' + nom + '">') +
         '<div class="container"><div class="slide-contenu">' +
         '<h1>' + nom + "</h1>" +
-        "<p>" + [v.annee, v.carburant, v.transmission].filter(Boolean).join(" · ") + " — " + fmtPrix(v.prix) + "</p>" +
+        "<p>" + [v.annee, tv(v.carburant), tv(v.transmission)].filter(Boolean).join(" · ") + " — " + fmtPrix(v.prix) + "</p>" +
         '<div class="slide-actions">' +
-        '<a class="btn btn-blanc" href="vehicule.html?id=' + v.id + '">Voir la fiche</a>' +
-        '<a class="btn btn-contour" target="_blank" rel="noopener" href="' + lienWA("Bonjour, je suis intéressé par : " + nom + (v.annee ? " " + v.annee : "") + ".") + '">Contacter sur WhatsApp</a>' +
+        '<a class="btn btn-blanc" href="vehicule.html?id=' + v.id + '">' + t("slide.view") + '</a>' +
+        '<a class="btn btn-contour" target="_blank" rel="noopener" href="' + lienWA(t("wa.interest.short", { n: nom + (v.annee ? " " + v.annee : "") })) + '">' + t("btn.wa") + '</a>' +
         "</div></div></div></div>"
       );
     }).join("") +
     '<div class="points"><div class="container">' +
-    slides.map((_, i) => '<button class="point' + (i === 0 ? " actif" : "") + '" aria-label="Diapositive ' + (i + 1) + '"></button>').join("") +
+    slides.map((_, i) => '<button class="point' + (i === 0 ? " actif" : "") + '" aria-label="' + t("slide.n", { n: i + 1 }) + '"></button>').join("") +
     "</div></div>";
 
   const els = hero.querySelectorAll(".slide");
@@ -42,20 +42,14 @@
   document.getElementById("rubriques").innerHTML = S.rubriques.map(r => {
     const n = window.VEHICULES.filter(v => typeDe(v) === r.type && (!r.etat || v.etat === r.etat)).length;
     return '<a class="tuile apparait" href="' + lienRubrique(r) + '"><div class="ico">' + icone(r.icone) + "</div>" +
-      "<h3>" + r.nom + "</h3><p>" + r.texte + '</p><span class="tuile-nb' + (n ? "" : " bientot") + '">' + (n ? n + (n > 1 ? " articles" : " article") : "Bientôt") + " →</span></a>";
+      "<h3>" + rubNom(r) + "</h3><p>" + rubTexte(r) + '</p><span class="tuile-nb' + (n ? "" : " bientot") + '">' + (n ? t(n > 1 ? "tile.n" : "tile.1", { n }) : t("tile.soon")) + " →</span></a>";
   }).join("");
 
   // FAQ (modifier les textes ici)
-  const faq = [
-    ["Que veut dire « prix une fois arrivé au Port autonome de Dakar » ?", "C'est le prix annoncé pour un article arrivé au Port autonome de Dakar. Pour le détail des frais après l'arrivée au port (dédouanement, transport), demandez-nous sur WhatsApp."],
-    ["Comment commander ou réserver ?", "Ouvrez la fiche de l'article, puis cliquez sur « Contacter sur WhatsApp ». Nous échangeons ensuite sur les détails et les étapes."],
-    ["Puis-je voir plus de photos ou une vidéo ?", "Oui. Nous sommes sur place à Guangzhou : demandez-nous des photos ou une vidéo de l'article sur WhatsApp."],
-    ["Vendez-vous autre chose que des voitures ?", "Oui : moteurs, tracteurs, camions, machines industrielles et décortiqueuses d'arachides. Si vous ne trouvez pas ce que vous cherchez, demandez-le nous."],
-    ["Comment vous joindre ?", "Par WhatsApp au " + S.whatsappAffiche + (S.horaires ? " (" + S.horaires.toLowerCase() + ")" : "") + ", ou depuis la page Contact."]
-  ];
+  const faq = [1, 2, 3, 4, 5].map(i => [t("faq" + i + ".q"), t("faq" + i + ".a")]);
   document.getElementById("faq").innerHTML = faq.map(q => "<details><summary>" + q[0] + "</summary><p>" + q[1] + "</p></details>").join("");
 
   document.getElementById("vedettes").innerHTML = window.VEHICULES.slice(0, 4).map(carteVehicule).join("");
-  document.getElementById("cta-wa").href = lienWA("Bonjour, je souhaite des informations sur vos véhicules.");
+  document.getElementById("cta-wa").href = lienWA(t("wa.cars"));
   apparitions();
 })();

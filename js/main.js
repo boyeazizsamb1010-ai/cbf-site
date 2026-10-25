@@ -11,8 +11,8 @@
   };
 
   // ---------- Helpers globaux ----------
-  window.fmtPrix = n => !n ? "Prix sur demande" : new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " " + S.devise;
-  window.fmtKm = n => new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " km";
+  window.fmtPrix = n => !n ? t("price.ask") : fmtNombre(n) + " " + S.devise;
+  window.fmtKm = n => fmtNombre(n) + " km";
   window.lienWA = msg => "https://wa.me/" + S.whatsapp + "?text=" + encodeURIComponent(msg);
 
   // Rubriques : le type d'un article (voiture par défaut)
@@ -96,14 +96,14 @@
     return (
       '<a class="carte" href="vehicule.html?id=' + v.id + '">' +
       '<div class="carte-img"><img src="' + photo + '" alt="' + nomArticle(v) + '" loading="lazy" decoding="async" onerror="imgSecours(this,\'' + v.id + '\')">' +
-      '<button class="coeur' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" aria-label="Ajouter aux favoris" aria-pressed="' + favoris.est(v.id) + '"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.4 5c2 0 3.6 1.1 4.6 2.7C12 6.1 13.600 5 15.600 5 19 5 20.800 8.600 19.500 11.800 17.500 16.400 12 21 12 21z"/></svg></button>' +
-      '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (v.etat || "") + "</span></div>" +
-      '<div class="carte-corps"><span class="carte-cat">' + v.categorie + "</span>" +
+      '<button class="coeur' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" aria-label="' + t("card.fav") + '" aria-pressed="' + favoris.est(v.id) + '"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.4 5c2 0 3.6 1.1 4.6 2.7C12 6.1 13.600 5 15.600 5 19 5 20.800 8.600 19.500 11.800 17.500 16.400 12 21 12 21z"/></svg></button>' +
+      '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (tv(v.etat) || "") + "</span></div>" +
+      '<div class="carte-corps"><span class="carte-cat">' + tv(v.categorie) + "</span>" +
       '<span class="carte-titre">' + nomArticle(v) + (v.annee ? " " + v.annee : "") + "</span>" +
       '<span class="carte-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</span>" +
-      (v.notePrix ? '<span class="carte-meta" style="font-size:.78rem">' + v.notePrix + "</span>" : "") +
-      '<span class="carte-meta">' + [v.carburant, v.transmission, v.km ? fmtKm(v.km) : ""].filter(Boolean).join(" · ") + "</span>" +
-      '<span class="carte-lien">Voir la fiche →</span></div></a>'
+      (v.notePrix ? '<span class="carte-meta" style="font-size:.78rem">' + tv(v.notePrix) + "</span>" : "") +
+      '<span class="carte-meta">' + [tv(v.carburant), tv(v.transmission), v.km ? fmtKm(v.km) : ""].filter(Boolean).join(" · ") + "</span>" +
+      '<span class="carte-lien">' + t("card.see") + '</span></div></a>'
     );
   };
 
@@ -115,12 +115,13 @@
     header.className = "header" + (surHero ? " sur-hero" : "");
     header.innerHTML =
       '<div class="container header-in">' +
-      '<a class="logo" href="index.html"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "<small>" + S.slogan + "</small></span></a>" +
-      '<button class="burger" aria-label="Menu">' + ICO.menu + "</button>" +
+      '<a class="logo" href="index.html"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "<small>" + t("slogan") + "</small></span></a>" +
+      '<button class="burger" aria-label="' + t("menu") + '">' + ICO.menu + "</button>" +
       '<nav class="nav">' +
-      lien("index.html", "Accueil") + lien("vehicules.html", "Catalogue") + lien("a-propos.html", "À propos") + lien("contact.html", "Contact") +
-      '<a class="btn" href="' + lienWA("Bonjour, je souhaite prendre rendez-vous.") + '" target="_blank" rel="noopener">Prendre RDV</a>' +
+      lien("index.html", t("nav.home")) + lien("vehicules.html", t("nav.catalog")) + lien("a-propos.html", t("nav.about")) + lien("contact.html", t("nav.contact")) +
+      '<a class="btn" href="' + lienWA(t("wa.rdv")) + '" target="_blank" rel="noopener">' + t("nav.rdv") + "</a>" +
       "</nav></div>";
+    header.querySelector(".nav").appendChild(selecteurLangue());
     header.querySelector(".burger").addEventListener("click", () => header.querySelector(".nav").classList.toggle("ouvert"));
   }
 
@@ -130,22 +131,23 @@
     footer.className = "footer";
     footer.innerHTML =
       '<div class="container"><div class="footer-grille">' +
-      '<div><div class="logo" style="margin-bottom:12px"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "</span></div><p>" + S.slogan + ". Achat de véhicules et de machines en Chine, import-export de qualité.</p></div>" +
-      '<div><h4>Navigation</h4><a href="index.html">Accueil</a><a href="vehicules.html">Véhicules</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></div>' +
-      '<div><h4>Nos produits</h4>' + S.rubriques.map(r => '<a href="' + lienRubrique(r) + '">' + r.nom + "</a>").join("") + "</div>" +
+      '<div><div class="logo" style="margin-bottom:12px"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "</span></div><p>" + t("footer.about") + "</p></div>" +
+      '<div><h4>' + t("footer.nav") + '</h4><a href="index.html">' + t("nav.home") + '</a><a href="vehicules.html">' + t("footer.vehicles") + '</a><a href="a-propos.html">' + t("nav.about") + '</a><a href="contact.html">' + t("nav.contact") + '</a></div>' +
+      '<div><h4>' + t("footer.products") + '</h4>' + S.rubriques.map(r => '<a href="' + lienRubrique(r) + '">' + rubNom(r) + "</a>").join("") + "</div>" +
       '' +
-      '<div><h4>Contact</h4><a href="' + lienWA("Bonjour") + '" target="_blank" rel="noopener">WhatsApp : ' + S.whatsappAffiche + "</a>" +
-      (S.email ? '<a href="mailto:' + S.email + '">' + S.email + "</a>" : "") + "<p>" + S.adresse + "</p>" + (S.horaires ? "<p>" + S.horaires + "</p>" : "") + "</div>" +
-      '</div><div class="footer-bas">© ' + new Date().getFullYear() + " " + S.nom + ". Tous droits réservés.</div></div>";
+      '<div><h4>' + t("footer.contact") + '</h4><a href="' + lienWA(t("wa.hello")) + '" target="_blank" rel="noopener">WhatsApp : ' + S.whatsappAffiche + "</a>" +
+      (S.email ? '<a href="mailto:' + S.email + '">' + S.email + "</a>" : "") + "<p>" + t("address") + "</p>" + (S.horaires ? "<p>" + t("hours") + "</p>" : "") + "</div>" +
+      '</div><div class="footer-bas">© ' + new Date().getFullYear() + " " + S.nom + ". " + t("footer.rights") + "</div></div>";
+    footer.querySelector(".footer-bas").appendChild(selecteurLangue());
   }
 
   // ---------- Bouton WhatsApp flottant ----------
   const wa = document.createElement("a");
   wa.className = "wa-flottant";
-  wa.href = lienWA("Bonjour, je souhaite des informations.");
+  wa.href = lienWA(t("wa.info"));
   wa.target = "_blank";
   wa.rel = "noopener";
-  wa.setAttribute("aria-label", "Écrire sur WhatsApp");
+  wa.setAttribute("aria-label", t("wa.float"));
   wa.innerHTML = ICO.wa;
   document.body.appendChild(wa);
 

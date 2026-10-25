@@ -10,16 +10,17 @@
     || S.rubriques.find(r => r.type === params.get("type"));
   if (rDepart) rub = rDepart.cle;
 
-  const etat = { q: "", cat: "Toutes catégories", tri: "", budget: "", carb: "", fav: false };
+  const TOUTES = "Toutes catégories"; // valeur interne (non traduite)
+  const etat = { q: "", cat: TOUTES, tri: "", budget: "", carb: "", fav: false };
   const dansRubrique = (v, r) => typeDe(v) === r.type && (!r.etat || v.etat === r.etat);
   const articlesDe = cle => cle === "tout" ? all : all.filter(v => dansRubrique(v, S.rubriques.find(r => r.cle === cle)));
 
   function rubriques() {
     const zone = document.getElementById("rubriques");
-    const items = [{ cle: "tout", nom: "Tout", n: all.length }].concat(S.rubriques.map(r => ({ cle: r.cle, nom: r.nom, n: articlesDe(r.cle).length })));
+    const items = [{ cle: "tout", nom: t("all"), n: all.length }].concat(S.rubriques.map(r => ({ cle: r.cle, nom: rubNom(r), n: articlesDe(r.cle).length })));
     zone.innerHTML = items.map(i => '<button class="pastille' + (rub === i.cle ? " actif" : "") + '" data-cle="' + i.cle + '">' + i.nom + ' <span class="nb">' + i.n + "</span></button>").join("");
     zone.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-      rub = b.dataset.cle; etat.cat = "Toutes catégories";
+      rub = b.dataset.cle; etat.cat = TOUTES;
       const r = S.rubriques.find(x => x.cle === rub);
       history.replaceState(null, "", r ? lienRubrique(r) : "vehicules.html");
       rubriques(); categories(); carburants(); rendre();
@@ -28,43 +29,43 @@
 
   function categories() {
     const zone = document.getElementById("categories");
-    const liste = ["Toutes catégories", ...new Set(articlesDe(rub).map(v => v.categorie).filter(Boolean))];
+    const liste = [TOUTES, ...new Set(articlesDe(rub).map(v => v.categorie).filter(Boolean))];
     zone.hidden = liste.length < 3;
-    zone.innerHTML = liste.map(c => '<button class="pastille' + (etat.cat === c ? " actif" : "") + '">' + c + "</button>").join("");
-    zone.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { etat.cat = b.textContent; categories(); rendre(); }));
+    zone.innerHTML = liste.map(c => '<button class="pastille' + (etat.cat === c ? " actif" : "") + '" data-c="' + c.replace(/"/g, "&quot;") + '">' + (c === TOUTES ? t("cat.allcats") : tv(c)) + "</button>").join("");
+    zone.querySelectorAll("button").forEach(b => b.addEventListener("click", () => { etat.cat = b.dataset.c; categories(); rendre(); }));
   }
 
   function carburants() {
     const sel = document.getElementById("carb");
     const liste = [...new Set(articlesDe(rub).map(v => v.carburant).filter(Boolean))];
     sel.hidden = liste.length < 2;
-    sel.innerHTML = '<option value="">Tous les carburants</option>' + liste.map(c => '<option value="' + c + '">' + c + "</option>").join("");
+    sel.innerHTML = '<option value="">' + t("carb.all") + '</option>' + liste.map(c => '<option value="' + c + '">' + tv(c) + "</option>").join("");
     if (!liste.includes(etat.carb)) etat.carb = "";
     sel.value = etat.carb;
   }
 
   function titre() {
     const r = S.rubriques.find(x => x.cle === rub);
-    document.getElementById("titre").textContent = r ? r.nom : "Tout le catalogue, en ligne.";
-    document.getElementById("sous-titre").textContent = r ? r.texte : "Voitures, moteurs, tracteurs, camions et machines : choisissez une rubrique, puis contactez-nous sur WhatsApp.";
-    document.title = (r ? r.nom : "Catalogue") + " – " + S.nom;
+    document.getElementById("titre").textContent = r ? rubNom(r) : t("cat.title");
+    document.getElementById("sous-titre").textContent = r ? rubTexte(r) : t("cat.sub");
+    document.title = (r ? rubNom(r) : t("nav.catalog")) + " – " + S.nom;
   }
 
   function rendre() {
     titre();
     const q = etat.q.trim().toLowerCase();
     let r = articlesDe(rub).filter(v =>
-      (etat.cat === "Toutes catégories" || v.categorie === etat.cat) &&
+      (etat.cat === TOUTES || v.categorie === etat.cat) &&
       (!etat.carb || v.carburant === etat.carb) &&
       (!etat.fav || favoris.est(v.id)) &&
       (!etat.budget || (v.prix >= (+etat.budget.split("-")[0] || 0) && (!etat.budget.split("-")[1] || v.prix < +etat.budget.split("-")[1]))) &&
-      (!q || (nomArticle(v) + " " + (v.annee || "") + " " + (v.couleur || "")).toLowerCase().includes(q))
+      (!q || (nomArticle(v) + " " + (v.annee || "") + " " + (v.couleur || "") + " " + (tv(v.couleur) || "")).toLowerCase().includes(q))
     );
     if (etat.tri === "prix-asc") r.sort((a, b) => a.prix - b.prix);
     if (etat.tri === "prix-desc") r.sort((a, b) => b.prix - a.prix);
     if (etat.tri === "annee-desc") r.sort((a, b) => (b.annee || 0) - (a.annee || 0));
     document.getElementById("liste").innerHTML = r.map(carteVehicule).join("");
-    document.getElementById("compteur").textContent = r.length + (r.length > 1 ? " articles disponibles" : " article disponible");
+    document.getElementById("compteur").textContent = t(r.length > 1 ? "count.n" : "count.1", { n: r.length });
     document.getElementById("nb-fav").textContent = favoris.liste().length;
     document.getElementById("btn-fav").classList.toggle("actif", etat.fav);
     apparitions();
@@ -72,11 +73,11 @@
     vide.hidden = r.length > 0;
     const rb = S.rubriques.find(x => x.cle === rub);
     const aucun = articlesDe(rub).length === 0 && !etat.fav;
-    const sujet = rb ? rb.nom.toLowerCase() : "ce que vous cherchez";
+    const sujet = rb ? rubNom(rb).toLowerCase() : t("empty.any");
     vide.innerHTML = aucun
-      ? "<h2>Bientôt disponible</h2><p style=\"margin:8px 0 18px\">Nous n'avons pas encore de " + sujet + " en ligne, mais nous pouvons en trouver pour vous en Chine.</p>" +
-        '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWA("Bonjour, je cherche : " + (rb ? rb.nom : "un article") + ".") + '">Demander sur WhatsApp</a>'
-      : (etat.fav ? "Vous n'avez pas encore de favoris : touchez le cœur sur un article pour le garder ici." : "Aucun article ne correspond à votre recherche.");
+      ? "<h2>" + t("empty.h") + "</h2><p style=\"margin:8px 0 18px\">" + t("empty.p", { sujet }) + "</p>" +
+        '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWA(t("wa.looking", { x: rb ? rubNom(rb) : t("wa.anitem") })) + '">' + t("empty.btn") + '</a>'
+      : (etat.fav ? t("empty.fav") : t("empty.none"));
   }
 
   document.getElementById("q").addEventListener("input", e => { etat.q = e.target.value; rendre(); });

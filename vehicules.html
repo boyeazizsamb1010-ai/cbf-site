@@ -24,31 +24,31 @@
 
   <main class="container">
     <div class="page-titre">
-      <div class="eyebrow">Sur le site</div>
+      <div data-i18n="cat.eyebrow" class="eyebrow">Sur le site</div>
       <h1 id="titre">Tout le catalogue, en ligne.</h1>
       <p id="sous-titre"></p>
     </div>
 
     <div class="outils">
-      <div class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Rechercher une marque, un modèle…" aria-label="Rechercher"></div>
-      <select id="tri" aria-label="Trier">
-        <option value="">Trier par</option>
-        <option value="prix-asc">Prix croissant</option>
-        <option value="prix-desc">Prix décroissant</option>
-        <option value="annee-desc">Plus récents</option>
+      <div class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" data-i18n-ph="search.ph" data-i18n-aria="search.aria" placeholder="Rechercher une marque, un modèle…" aria-label="Rechercher"></div>
+      <select id="tri" data-i18n-aria="sort.aria" aria-label="Trier">
+        <option data-i18n="sort.by" value="">Trier par</option>
+        <option data-i18n="sort.asc" value="prix-asc">Prix croissant</option>
+        <option data-i18n="sort.desc" value="prix-desc">Prix décroissant</option>
+        <option data-i18n="sort.recent" value="annee-desc">Plus récents</option>
       </select>
     </div>
     <div class="pastilles rubriques" id="rubriques"></div>
     <div class="filtres">
-      <select id="budget" aria-label="Budget">
-        <option value="">Tous les prix</option>
-        <option value="0-6000000">Moins de 6 000 000 FCFA</option>
-        <option value="6000000-8000000">6 000 000 à 8 000 000 FCFA</option>
-        <option value="8000000-10000000">8 000 000 à 10 000 000 FCFA</option>
-        <option value="10000000-">Plus de 10 000 000 FCFA</option>
+      <select id="budget" data-i18n-aria="budget.aria" aria-label="Budget">
+        <option data-i18n="budget.all" value="">Tous les prix</option>
+        <option data-i18n="budget.1" value="0-6000000">Moins de 6 000 000 FCFA</option>
+        <option data-i18n="budget.2" value="6000000-8000000">6 000 000 à 8 000 000 FCFA</option>
+        <option data-i18n="budget.3" value="8000000-10000000">8 000 000 à 10 000 000 FCFA</option>
+        <option data-i18n="budget.4" value="10000000-">Plus de 10 000 000 FCFA</option>
       </select>
-      <select id="carb" aria-label="Carburant"></select>
-      <button class="pastille fav" id="btn-fav" type="button">♥ Mes favoris <span class="nb" id="nb-fav"></span></button>
+      <select id="carb" data-i18n-aria="carb.aria" aria-label="Carburant"></select>
+      <button class="pastille fav" id="btn-fav" type="button"><span data-i18n="fav.btn">♥ Mes favoris</span> <span class="nb" id="nb-fav"></span></button>
     </div>
     <div class="pastilles" id="categories"></div>
 
@@ -61,6 +61,8 @@
 
   <script src="js/config.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/descriptions.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/catalogue.js"></script>
 </body>

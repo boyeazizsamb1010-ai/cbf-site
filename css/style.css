@@ -19,7 +19,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fond); color: var(--texte); line-height: 1.6; }
+body { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC", sans-serif; background: var(--fond); color: var(--texte); line-height: 1.6; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 .container { width: min(100% - 32px, var(--max)); margin-inline: auto; }
@@ -297,3 +297,13 @@ a { color: inherit; text-decoration: none; }
   .fiche-infos h1 { overflow-wrap: anywhere; }
 }
 html, body { overflow-x: clip; }
+
+/* ===== Langues (FR / EN / 中文) ===== */
+.langues { display: flex; gap: 4px; align-items: center; margin-left: 4px; }
+.langues button { background: transparent; color: inherit; border: 1.5px solid currentColor; border-radius: 999px; padding: 3px 10px; font: inherit; font-size: .76rem; font-weight: 700; cursor: pointer; opacity: .7; line-height: 1.5; }
+.langues button:hover { opacity: 1; }
+.langues button.actif { opacity: 1; background: var(--or); border-color: var(--or); color: var(--vert-fonce); }
+html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3 { letter-spacing: 0; }
+@media (max-width: 860px) { .langues { margin: 14px 0 0; } }
+.footer-bas { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.footer-bas .langues { margin: 0; }
