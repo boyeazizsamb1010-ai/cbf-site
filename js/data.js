@@ -136,5 +136,32 @@ window.VEHICULES = [
       "peugeot-4008-console-arriere.jpg"
     ],
     description: "Peugeot 4008 350THP Édition Deluxe, moteur 1.6T de 123 kW. Sièges en cuir noir, toit panoramique, i-Cockpit avec instrumentation numérique, grand écran tactile, palettes au volant, climatisation et prise USB à l'arrière. 39 800 km."
+  },
+    {
+    id: "jetour-x70-plus-2023",
+    marque: "Jetour", modele: "X70 PLUS 1.5T DCT", annee: 2023,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 8500000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 32102, carburant: "Essence", transmission: "Automatique",
+    couleur: "Noir", puissance: "1.5T", portes: 5, stock: 1,
+    vedette: false, teinte: "#15161a",
+    photos: [
+      "jetour-x70-avant-1.jpg",
+      "jetour-x70-avant-2.jpg",
+      "jetour-x70-arriere.jpg",
+      "jetour-x70-interieur-avant.jpg",
+      "jetour-x70-interieur-cote.jpg",
+      "jetour-x70-tableau-de-bord.jpg",
+      "jetour-x70-volant.jpg",
+      "jetour-x70-ecran.jpg",
+      "jetour-x70-console.jpg",
+      "jetour-x70-compteur.jpg",
+      "jetour-x70-sieges-arriere-1.jpg",
+      "jetour-x70-sieges-arriere-2.jpg",
+      "jetour-x70-porte-avant.jpg",
+      "jetour-x70-porte-passager.jpg"
+    ],
+    description: "Jetour X70 PLUS 1.5T à boîte DCT, 5 places, modèle 2023. Sièges et planche de bord en cuir rouge bordeaux, grand écran numérique, climatisation et prise 120 W. 32 102 km au compteur."
   }
 ];
