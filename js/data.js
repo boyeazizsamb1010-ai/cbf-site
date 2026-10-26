@@ -214,5 +214,17 @@ window.VEHICULES = [
     specs: [["Transmission intégrale", "4x4"]],
     photos: ["toyota-rav4-arriere-1.jpg","toyota-rav4-arriere-2.jpg","toyota-rav4-interieur-avant.jpg","toyota-rav4-interieur-cote.jpg","toyota-rav4-sieges-arriere.jpg"],
     description: "Toyota RAV4, version phare 2020 à double motorisation (hybride) 2.5L, boîte CVT et transmission intégrale 4x4. Presque neuf : seulement 4 300 km. Sièges en cuir noir, grand écran central, tapis de sol assortis et ventilation à l'arrière."
+  },
+    {
+    id: "haval-f7x-2019",
+    marque: "Haval", modele: "F7x 1.5T", annee: 2019,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 6000000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 30000, carburant: "Essence", transmission: "Automatique",
+    couleur: "Bleu", puissance: "1.5T · 120 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#1d4fa8",
+    photos: ["haval-f7x-avant-1.jpg","haval-f7x-avant-2.jpg","haval-f7x-avant-3.jpg","haval-f7x-arriere-1.jpg","haval-f7x-arriere-2.jpg","haval-f7x-interieur-avant.jpg","haval-f7x-tableau-de-bord.jpg","haval-f7x-sieges-arriere.jpg","haval-f7x-moteur.jpg"],
+    description: "Haval F7x 1.5T de 120 kW, SUV coupé, 5 places, fabriqué en avril 2019. Carrosserie bleue, sièges en cuir noir avec bandes jaunes, toit panoramique, instrumentation numérique, grand écran tactile, éclairage d'ambiance et sorties de ventilation à l'arrière. Véhicule propre, très bon état, 30 000 km."
   }
 ];

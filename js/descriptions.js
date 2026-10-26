@@ -43,5 +43,9 @@ window.DESCRIPTIONS = {
   "toyota-rav4-2020": {
     en: "Toyota RAV4, flagship 2020 version with dual-motor (hybrid) 2.5L, CVT gearbox and 4x4 all-wheel drive. Nearly new: only 4,300 km. Black leather seats, large central screen, matching floor mats and rear ventilation.",
     zh: "丰田 RAV4，2020 款旗舰版，2.5L 双擎（混合动力），CVT 变速箱，四驱。接近全新：仅行驶 4,300 公里。黑色真皮座椅，大尺寸中控屏，配套脚垫和后排出风口。"
+  },
+    "haval-f7x-2019": {
+    en: "Haval F7x 1.5T, 120 kW, coupé-style SUV, 5 seats, built in April 2019. Blue body, black leather seats with yellow stripes, panoramic roof, digital instrument cluster, large touchscreen, ambient lighting and rear air vents. Clean vehicle in very good condition, 30,000 km.",
+    zh: "哈弗 F7x 1.5T，功率 120 kW，轿跑式 SUV，5 座，2019 年 4 月生产。蓝色车身，黑色真皮座椅配黄色条纹，全景天窗，数字仪表，大尺寸触控屏，氛围灯和后排出风口。车辆干净，车况极佳，里程 30,000 公里。"
   }
 };
