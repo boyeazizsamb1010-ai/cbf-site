@@ -44,8 +44,28 @@ window.DESCRIPTIONS = {
     en: "Toyota RAV4, flagship 2020 version with dual-motor (hybrid) 2.5L, CVT gearbox and 4x4 all-wheel drive. Nearly new: only 4,300 km. Black leather seats, large central screen, matching floor mats and rear ventilation.",
     zh: "丰田 RAV4，2020 款旗舰版，2.5L 双擎（混合动力），CVT 变速箱，四驱。接近全新：仅行驶 4,300 公里。黑色真皮座椅，大尺寸中控屏，配套脚垫和后排出风口。"
   },
-    "haval-f7x-2019": {
+  "haval-f7x-2019": {
     en: "Haval F7x 1.5T, 120 kW, coupé-style SUV, 5 seats, built in April 2019. Blue body, black leather seats with yellow stripes, panoramic roof, digital instrument cluster, large touchscreen, ambient lighting and rear air vents. Clean vehicle in very good condition, 30,000 km.",
     zh: "哈弗 F7x 1.5T，功率 120 kW，轿跑式 SUV，5 座，2019 年 4 月生产。蓝色车身，黑色真皮座椅配黄色条纹，全景天窗，数字仪表，大尺寸触控屏，氛围灯和后排出风口。车辆干净，车况极佳，里程 30,000 公里。"
+  },
+  "haval-f7-2019": {
+    en: "Haval F7 2.0T, 140 kW, 4x4 all-wheel drive, China VI emissions standard, 5 seats, built in 2019. Black body, black leather seats with power adjustment, panoramic sunroof, digital instrument cluster, large central screen, wireless phone charger, parking sensors and rear air vents. Real mileage: 32,017 km.",
+    zh: "哈弗F7 2.0T，功率140千瓦，四驱，国六排放标准，5座，2019年生产。黑色车身，黑色真皮座椅（电动调节），全景天窗，全液晶仪表盘，中控大屏，手机无线充电，倒车雷达，后排出风口。实际里程：32,017公里。"
+  },
+  "jetour-x70-plus-champion-2024": {
+    en: "Jetour X70 PLUS Champion Edition 1.5T, 108 kW, DCT automatic gearbox, 5 seats, built in March 2024. Black body, burgundy quilted leather interior with power-adjustable seats, panoramic sunroof, dual digital screens, designer central air vents, quilted floor mats and rear air vents. About 19,000 km.",
+    zh: "捷途X70 PLUS 冠军版 1.5T，功率108千瓦，DCT双离合变速箱，5座，2024年3月生产。黑色车身，酒红色菱格真皮内饰，座椅电动调节，全景天窗，双联屏，中控造型出风口，菱格脚垫，后排出风口。约19,000公里。"
+  },
+  "haval-f7-2020": {
+    en: "Haval F7 2.0T, China VI emissions standard, two-wheel drive, first registered in November 2020. Black body, black leather seats with orange stitching, panoramic sunroof, digital instrument cluster, large touchscreen, steering-wheel paddle shifters, LED headlights and rear air vents. Real mileage: 30,020 km.",
+    zh: "哈弗F7 2.0T，国六排放标准，两驱，2020年11月上牌。黑色车身，黑色真皮座椅配橙色缝线，全景天窗，全液晶仪表盘，中控大屏，方向盘换挡拨片，LED大灯，后排出风口。实际里程：30,020公里。"
+  },
+  "haval-h6s-dht-2022": {
+    en: "Haval H6S 1.5T DHT (intelligent hybrid powertrain), coupe-style SUV first registered in August 2022. Red body with black alloy wheels and red brake calipers, rear spoiler, dual digital screens (instrument cluster and central display), sport seats in leather and Alcantara with fluorescent green stitching and seat belts, wireless phone charger and rear air vents. About 40,000 km.",
+    zh: "哈弗H6S 1.5T DHT（智能混动），轿跑SUV，2022年8月上牌。红色车身配黑色轮毂和红色刹车卡钳，尾翼，双联屏（仪表盘与中控大屏），真皮与麂皮运动座椅配荧光绿缝线和安全带，手机无线充电，后排出风口。约40,000公里。"
+  },
+  "tracteur-agricole-140-150ch": {
+    en: "Red farm tractor with an enclosed cab, available with 140 hp or 150 hp, 4 or 6 cylinders depending on the version. Large agricultural tyres, front weights, beacon light, roof work lights and rear hydraulic couplings. Contact us for the price and the version you need.",
+    zh: "红色农用拖拉机，配封闭式驾驶室，有140马力和150马力可选，按版本配4缸或6缸发动机。大型农用轮胎，前配重，警示灯，车顶工作灯，后部液压接口。价格和所需版本请联系我们。"
   }
 };

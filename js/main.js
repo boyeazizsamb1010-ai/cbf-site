@@ -11,14 +11,14 @@
   };
 
   // ---------- Helpers globaux ----------
-  window.fmtPrix = n => !n ? t("price.ask") : fmtNombre(n) + " " + S.devise;
+  window.fmtPrix = n => !n ? t("price.ask") : fmtPrixAffiche(n);
   window.fmtKm = n => fmtNombre(n) + " km";
   window.lienWA = msg => "https://wa.me/" + S.whatsapp + "?text=" + encodeURIComponent(msg);
 
   // Rubriques : le type d'un article (voiture par défaut)
   window.typeDe = v => v.type || "voiture";
   window.rubriqueDe = v => S.rubriques.find(r => r.type === typeDe(v) && (!r.etat || r.etat === v.etat)) || S.rubriques.find(r => r.type === typeDe(v));
-  window.nomArticle = v => [v.marque, v.modele].filter(Boolean).join(" ");
+  window.nomArticle = v => [v.marque, v.modele].filter(Boolean).map(x => tv(x)).join(" ");
   window.ICONES = {
     voiture: '<path d="M3 17h18M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v4H3z"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16.5" cy="17" r="1.6"/>',
     moteur: '<path d="M4 9h3l2-2h6l2 2h3v7h-3l-2 2H9l-2-2H4z"/><path d="M2 12v2M22 12v2M12 4v3"/>',

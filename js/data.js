@@ -137,7 +137,7 @@ window.VEHICULES = [
     ],
     description: "Peugeot 4008 350THP Édition Deluxe, moteur 1.6T de 123 kW. Sièges en cuir noir, toit panoramique, i-Cockpit avec instrumentation numérique, grand écran tactile, palettes au volant, climatisation et prise USB à l'arrière. 39 800 km."
   },
-    {
+  {
     id: "jetour-x70-plus-2023",
     marque: "Jetour", modele: "X70 PLUS 1.5T DCT", annee: 2023,
     categorie: "SUV / 4x4", etat: "Occasion",
@@ -164,7 +164,7 @@ window.VEHICULES = [
     ],
     description: "Jetour X70 PLUS 1.5T à boîte DCT, 5 places, modèle 2023. Sièges et planche de bord en cuir rouge bordeaux, grand écran numérique, climatisation et prise 120 W. 32 102 km au compteur."
   },
-    {
+  {
     id: "jetour-x90-pro-2024",
     marque: "Jetour", modele: "X90 PRO 1.6T DCT Deluxe 7 places", annee: 2024,
     categorie: "SUV / 4x4", etat: "Occasion",
@@ -189,7 +189,7 @@ window.VEHICULES = [
     photos: ["peugeot-4008-elite-avant-1.jpg","peugeot-4008-elite-avant-2.jpg","peugeot-4008-elite-profil.jpg","peugeot-4008-elite-coffre.jpg","peugeot-4008-elite-interieur-avant.jpg","peugeot-4008-elite-tableau-de-bord.jpg","peugeot-4008-elite-volant.jpg","peugeot-4008-elite-compteur.jpg","peugeot-4008-elite-console.jpg","peugeot-4008-elite-interieur-cote.jpg","peugeot-4008-elite-sieges-arriere-1.jpg","peugeot-4008-elite-sieges-arriere-2.jpg"],
     description: "Peugeot 4008 350THP Édition Elite, moteur 1.6T de 123 kW, boîte automatique, 5 places. Carrosserie orange cuivré, sièges en cuir noir, i-Cockpit avec instrumentation numérique, grand écran tactile, toit panoramique et palettes au volant. 95 489 km au compteur."
   },
-    {
+  {
     id: "peugeot-5008-2017",
     marque: "Peugeot", modele: "5008 380THP Elite 7 places", annee: 2017,
     categorie: "SUV / 4x4", etat: "Occasion",
@@ -215,7 +215,7 @@ window.VEHICULES = [
     photos: ["toyota-rav4-arriere-1.jpg","toyota-rav4-arriere-2.jpg","toyota-rav4-interieur-avant.jpg","toyota-rav4-interieur-cote.jpg","toyota-rav4-sieges-arriere.jpg"],
     description: "Toyota RAV4, version phare 2020 à double motorisation (hybride) 2.5L, boîte CVT et transmission intégrale 4x4. Presque neuf : seulement 4 300 km. Sièges en cuir noir, grand écran central, tapis de sol assortis et ventilation à l'arrière."
   },
-    {
+  {
     id: "haval-f7x-2019",
     marque: "Haval", modele: "F7x 1.5T", annee: 2019,
     categorie: "SUV / 4x4", etat: "Occasion",
@@ -226,5 +226,66 @@ window.VEHICULES = [
     vedette: false, teinte: "#1d4fa8",
     photos: ["haval-f7x-avant-1.jpg","haval-f7x-avant-2.jpg","haval-f7x-avant-3.jpg","haval-f7x-arriere-1.jpg","haval-f7x-arriere-2.jpg","haval-f7x-interieur-avant.jpg","haval-f7x-tableau-de-bord.jpg","haval-f7x-sieges-arriere.jpg","haval-f7x-moteur.jpg"],
     description: "Haval F7x 1.5T de 120 kW, SUV coupé, 5 places, fabriqué en avril 2019. Carrosserie bleue, sièges en cuir noir avec bandes jaunes, toit panoramique, instrumentation numérique, grand écran tactile, éclairage d'ambiance et sorties de ventilation à l'arrière. Véhicule propre, très bon état, 30 000 km."
+  },
+  {
+    id: "haval-f7-2019",
+    marque: "Haval", modele: "F7 2.0T 4x4", annee: 2019,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 6500000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 32017, carburant: "Essence", transmission: "Automatique",
+    couleur: "Noir", puissance: "2.0T · 140 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#1b1d26",
+    specs: [["Transmission intégrale", "4x4"]],
+    photos: ["haval-f7-avant-1.jpg","haval-f7-avant-2.jpg","haval-f7-avant-3.jpg","haval-f7-profil-gauche.jpg","haval-f7-profil-droit.jpg","haval-f7-arriere-1.jpg","haval-f7-arriere-2.jpg","haval-f7-interieur-avant.jpg","haval-f7-tableau-de-bord.jpg","haval-f7-volant.jpg","haval-f7-console.jpg","haval-f7-ecran.jpg","haval-f7-sieges-avant.jpg","haval-f7-sieges-arriere.jpg","haval-f7-coffre.jpg"],
+    description: "Haval F7 2.0T de 140 kW, transmission intégrale 4x4, norme China VI, 5 places, fabriqué en 2019. Carrosserie noire, sièges en cuir noir à réglage électrique, toit panoramique ouvrant, tableau de bord numérique, grand écran central, chargeur de téléphone sans fil, aide au stationnement et sorties de ventilation à l'arrière. Kilométrage réel : 32 017 km."
+  },
+  {
+    id: "jetour-x70-plus-champion-2024",
+    marque: "Jetour", modele: "X70 PLUS Champion 1.5T DCT", annee: 2024,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 9500000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 19000, carburant: "Essence", transmission: "Automatique",
+    couleur: "Noir", puissance: "1.5T · 108 kW", portes: 5, stock: 1,
+    vedette: false, teinte: "#15161a",
+    photos: ["jetour-x70-champion-avant-1.jpg","jetour-x70-champion-avant-2.jpg","jetour-x70-champion-avant-3.jpg","jetour-x70-champion-arriere-1.jpg","jetour-x70-champion-arriere-2.jpg","jetour-x70-champion-arriere-3.jpg","jetour-x70-champion-studio-arriere-2.jpg","jetour-x70-champion-studio-arriere.jpg","jetour-x70-champion-studio-profil.jpg","jetour-x70-champion-interieur-avant.jpg","jetour-x70-champion-sieges-avant.jpg","jetour-x70-champion-interieur-cote.jpg","jetour-x70-champion-sieges-arriere.jpg","jetour-x70-champion-toit-ouvrant.jpg","jetour-x70-champion-porte.jpg"],
+    description: "Jetour X70 PLUS Champion Edition 1.5T, 108 kW, boîte DCT, 5 places, fabriqué en mars 2024. Carrosserie noire, intérieur en cuir bordeaux matelassé avec sièges à réglage électrique, toit panoramique ouvrant, double écran numérique, aérations centrales design, tapis de sol matelassés et ventilation à l'arrière. Environ 19 000 km."
+  },
+  {
+    id: "haval-f7-2020",
+    marque: "Haval", modele: "F7 2.0T", annee: 2020,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 6000000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 30020, carburant: "Essence", transmission: "Automatique",
+    couleur: "Noir", puissance: "2.0T", portes: 5, stock: 1,
+    vedette: false, teinte: "#14161c",
+    photos: ["haval-f7-2020-avant-1.jpg","haval-f7-2020-avant-2.jpg","haval-f7-2020-avant-3.jpg","haval-f7-2020-profil.jpg","haval-f7-2020-arriere-1.jpg","haval-f7-2020-arriere-2.jpg","haval-f7-2020-phare.jpg","haval-f7-2020-interieur-avant.jpg","haval-f7-2020-tableau-de-bord.jpg","haval-f7-2020-volant.jpg","haval-f7-2020-console.jpg","haval-f7-2020-sieges-avant.jpg","haval-f7-2020-sieges-arriere.jpg","haval-f7-2020-coffre.jpg","haval-f7-2020-porte.jpg"],
+    description: "Haval F7 2.0T, norme China VI, deux roues motrices, mis en circulation en novembre 2020. Carrosserie noire, sièges en cuir noir avec surpiqûres orange, toit panoramique ouvrant, tableau de bord numérique, grand écran tactile, palettes au volant, phares LED et ventilation à l'arrière. Kilométrage réel : 30 020 km."
+  },
+  {
+    id: "haval-h6s-dht-2022",
+    marque: "Haval", modele: "H6S 1.5T DHT", annee: 2022,
+    categorie: "SUV / 4x4", etat: "Occasion",
+    prix: 7500000, ancienPrix: null,
+    notePrix: "Prix une fois arrivé au Port autonome de Dakar",
+    km: 40000, carburant: "Hybride", transmission: "Automatique",
+    couleur: "Rouge", puissance: "1.5T DHT", portes: 5, stock: 1,
+    vedette: false, teinte: "#9b1b2a",
+    photos: ["haval-h6s-dht-avant-1.jpg","haval-h6s-dht-avant-2.jpg","haval-h6s-dht-arriere-1.jpg","haval-h6s-dht-arriere-2.jpg","haval-h6s-dht-profil.jpg","haval-h6s-dht-interieur-avant.jpg","haval-h6s-dht-volant.jpg","haval-h6s-dht-console.jpg","haval-h6s-dht-ecran.jpg","haval-h6s-dht-sieges-avant.jpg","haval-h6s-dht-sieges-avant-2.jpg","haval-h6s-dht-sieges-arriere.jpg","haval-h6s-dht-sieges-arriere-2.jpg","haval-h6s-dht-porte.jpg","haval-h6s-dht-porte-passager.jpg"],
+    description: "Haval H6S 1.5T DHT (motorisation hybride intelligente), SUV coupé mis en circulation en août 2022. Carrosserie rouge avec jantes noires et étriers rouges, becquet arrière, double écran numérique (compteur et écran central), sièges sport en cuir et Alcantara avec surpiqûres et ceintures vert fluo, chargeur de téléphone sans fil et ventilation à l'arrière. Environ 40 000 km."
+  },
+  {
+    id: "tracteur-agricole-140-150ch",
+    type: "tracteur",
+    modele: "Tracteur agricole 140–150 ch",
+    categorie: "Tracteur agricole", etat: "Neuf",
+    prix: null, ancienPrix: null,
+    couleur: "Rouge", puissance: "140 – 150 ch", stock: 1,
+    vedette: false, teinte: "#b3201f",
+    specs: [["Cylindres", "4 ou 6 (selon la version)"]],
+    photos: ["tracteur-rouge-avant-1.jpg","tracteur-rouge-avant-2.jpg","tracteur-rouge-avant-3.jpg","tracteur-rouge-avant-4.jpg","tracteur-rouge-profil.jpg","tracteur-rouge-arriere-1.jpg","tracteur-rouge-arriere-2.jpg"],
+    description: "Tracteur agricole rouge avec cabine fermée, disponible en 140 ch ou 150 ch, 4 ou 6 cylindres selon la version. Gros pneus agricoles, contrepoids à l'avant, gyrophare, projecteurs de toit et distributeurs hydrauliques à l'arrière. Contactez-nous pour le prix et la version souhaitée."
   }
 ];

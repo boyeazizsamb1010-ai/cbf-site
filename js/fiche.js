@@ -14,12 +14,12 @@
   const rub = rubriqueDe(v);
   document.title = nomAn + " – " + window.SITE.nom;
   const grandes = photosDe(v), petites = miniDe(v);
-  const msgWA = t("wa.interest", { n: nomAn, p: v.prix ? t("wa.at", { prix: fmtPrix(v.prix) }) : "" });
+  const msgWA = t("wa.interest", { n: nomAn, p: v.prix ? t("wa.at", { prix: fmtPrixCFA(v.prix) }) : "" });
   const lienWhats = lienWA(msgWA);
 
   // lignes du tableau : seulement celles qui existent ; "specs" (facultatif) : [["Capacité", "5 t"]]
   const lignes = [
-    [t("lab.marque"), v.marque], [t("lab.modele"), v.modele], [t("lab.annee"), v.annee],
+    [t("lab.marque"), v.marque], [t("lab.modele"), tv(v.modele)], [t("lab.annee"), v.annee],
     [t("lab.km"), v.km === undefined ? "" : (v.km ? fmtKm(v.km) : "0 km")], [t("lab.carburant"), tv(v.carburant)],
     [t("lab.transmission"), tv(v.transmission)], [t("lab.couleur"), tv(v.couleur)],
     [t("lab.puissance"), tp(v.puissance)], [t("lab.portes"), v.portes], [t("lab.etat"), tv(v.etat)]
@@ -43,6 +43,7 @@
     "<h1>" + nomAn + "</h1>" +
     '<div class="fiche-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</div>" +
     (v.notePrix ? '<div class="carte-meta" style="margin-bottom:6px">' + tv(v.notePrix) + "</div>" : "") +
+    (v.prix && LANG !== "fr" ? '<div class="carte-meta" style="margin-bottom:6px;font-size:.82rem">' + t("price.ref", { x: fmtPrixCFA(v.prix) }) + " · " + t("price.note") + "</div>" : "") +
     (points.length ? '<div class="points-cles">' + points.map(p => "<span>" + p + "</span>").join("") + "</div>" : "") +
     (v.stock ? '<div class="stock">' + (v.stock > 1 ? t("stock.n", { n: v.stock }) : t("stock.1")) + "</div>" : "") +
     '<p class="fiche-desc">' + descDe(v) + "</p>" +

@@ -78,6 +78,8 @@
     share: ["Partager", "Share", "分享"],
     favorite: ["Favori", "Favourite", "收藏"],
     specs: ["Caractéristiques", "Specifications", "规格参数"],
+    "price.ref": ["Prix en FCFA : {x}", "Price in FCFA: {x}", "FCFA 价格：{x}"],
+    "price.note": ["Montant converti à titre indicatif.", "Converted amount, for information only.", "换算金额仅供参考。"],
     "lab.marque": ["Marque", "Make", "品牌"],
     "lab.modele": ["Modèle", "Model", "型号"],
     "lab.annee": ["Année", "Year", "年份"],
@@ -210,6 +212,8 @@
   // ---------- Valeurs des véhicules (carburant, couleur, état…) ----------
   const TERMES = {
     "Neuf": ["New", "全新"], "Occasion": ["Used", "二手"],
+    "Tracteur agricole": ["Farm tractor", "农用拖拉机"], "Tracteur agricole 140–150 ch": ["Farm tractor 140–150 hp", "农用拖拉机 140–150 马力"],
+    "Cylindres": ["Cylinders", "气缸数"], "4 ou 6 (selon la version)": ["4 or 6 (depending on version)", "4缸或6缸（视版本而定）"],
     "SUV / 4x4": ["SUV / 4x4", "SUV / 四驱"], "Berline": ["Sedan", "轿车"], "Pick-up": ["Pick-up", "皮卡"], "Monospace": ["MPV", "MPV"],
     "Essence": ["Petrol", "汽油"], "Diesel": ["Diesel", "柴油"], "Hybride": ["Hybrid", "混合动力"],
     "Hybride rechargeable": ["Plug-in hybrid", "插电式混合动力"], "Électrique": ["Electric", "纯电动"],
@@ -237,7 +241,7 @@
     return e ? e[lang === "en" ? 0 : 1] : x;
   };
   // puissance : "1.5T hybride" -> "1.5T hybrid"
-  const tp = p => (!p || lang === "fr") ? p : String(p).replace(/hybride/gi, lang === "en" ? "hybrid" : "混动");
+  const tp = p => (!p || lang === "fr") ? p : String(p).replace(/hybride/gi, lang === "en" ? "hybrid" : "混动").replace(/ ch\b/g, lang === "en" ? " hp" : " 马力");
   window.t = t; window.tv = tv; window.tp = tp;
 
   // ---------- Rubriques ----------
@@ -256,6 +260,30 @@
   // ---------- Formats de nombres ----------
   const LOC = { fr: "fr-FR", en: "en-US", zh: "zh-CN" }[lang];
   window.fmtNombre = n => new Intl.NumberFormat(LOC).format(n).replace(/[  ]/g, " ");
+
+  // ---------- Monnaie : FCFA (français), dollars US (anglais), yuan RMB (chinois) ----------
+  const TAUX = Object.assign({ en: 584.5, zh: 87.8 }, S.taux || {});
+  const SYMB = { en: "$", zh: "¥" };
+  // montant converti, arrondi à la centaine : 13 000 000 FCFA -> 22 200 $
+  const convertir = n => Math.round(n / TAUX[lang] / 100) * 100;
+  const montant = n => lang === "fr" ? fmtNombre(n) + " " + S.devise : SYMB[lang] + fmtNombre(convertir(n));
+  window.fmtPrixCFA = n => fmtNombre(n) + " " + S.devise;
+  window.fmtPrixAffiche = n => lang === "fr" ? fmtPrixCFA(n) : (lang === "en" ? "≈ " : "约 ") + montant(n);
+  // libellés du filtre de budget dans la monnaie de la langue
+  if (lang !== "fr") {
+    const m = montant, b = [6000000, 8000000, 10000000];
+    if (lang === "en") {
+      D["budget.1"][1] = "Under " + m(b[0]);
+      D["budget.2"][1] = m(b[0]) + " to " + m(b[1]);
+      D["budget.3"][1] = m(b[1]) + " to " + m(b[2]);
+      D["budget.4"][1] = "Over " + m(b[2]);
+    } else {
+      D["budget.1"][2] = m(b[0]) + " 以下";
+      D["budget.2"][2] = m(b[0]) + " – " + m(b[1]);
+      D["budget.3"][2] = m(b[1]) + " – " + m(b[2]);
+      D["budget.4"][2] = m(b[2]) + " 以上";
+    }
+  }
 
   // ---------- Description d'un véhicule dans la langue choisie ----------
   window.descDe = v => {
