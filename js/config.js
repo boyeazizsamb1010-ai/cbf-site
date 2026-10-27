@@ -17,7 +17,7 @@ window.SITE = {
   taux: { en: 584.5, zh: 87.8 },
   // Base de données (Supabase) : remplir après la création du projet (voir supabase/GUIDE-INSTALLATION.md).
   // Laisser vide = le site utilise js/data.js. La clé "anonKey" est publique par conception (la sécurité est dans la base).
-  supabase: { url: "", anonKey: "" },
+  supabase: { url: "https://eixkzrusoswayoimprry.supabase.co", anonKey: "sb_publishable_n5bRd0y8SKsxgTXDkMusTg_iFX_7Gv0" },
   // (facultatif) lien "Build hook" Netlify : sert au bouton "Mettre à jour les aperçus de partage" de l'espace admin
   buildHook: "",
   // Adresse du site (nom de domaine du client) : sert aux aperçus de partage
