@@ -1,5 +1,5 @@
 // Catalogue : rubriques (voitures neuves, moteurs, camions…) + recherche + filtres + tri
-(function () {
+window.avecDonnees(function () {
   const S = window.SITE;
   const all = window.VEHICULES;
   const params = new URLSearchParams(location.search);
@@ -87,4 +87,4 @@
   document.getElementById("btn-fav").addEventListener("click", () => { etat.fav = !etat.fav; rendre(); });
   document.addEventListener("favoris-change", () => { if (etat.fav) rendre(); else document.getElementById("nb-fav").textContent = favoris.liste().length; });
   rubriques(); categories(); carburants(); rendre();
-})();
+});

@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://cbf-guangzhou.netlify.app/sitemap.xml
+Disallow: /admin.html
+Sitemap: https://cbf-guangzhou.com/sitemap.xml

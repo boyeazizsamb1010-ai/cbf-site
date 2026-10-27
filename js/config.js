@@ -12,8 +12,16 @@ window.SITE = {
   adresse: "Guangzhou, Chine",
   horaires: "Tous les jours : 9h – 23h",
   devise: "FCFA",
-  // Adresse du site (à changer quand le nom de domaine sera acheté) : sert aux aperçus de partage
-  siteUrl: "https://cbf-guangzhou.netlify.app",
+  // Taux de change pour l'affichage en anglais ($) et en chinois (¥) : combien de FCFA pour 1 $ et pour 1 ¥.
+  // Taux du 25 octobre 2026 (à mettre à jour de temps en temps). Les montants affichés sont indicatifs.
+  taux: { en: 584.5, zh: 87.8 },
+  // Base de données (Supabase) : remplir après la création du projet (voir supabase/GUIDE-INSTALLATION.md).
+  // Laisser vide = le site utilise js/data.js. La clé "anonKey" est publique par conception (la sécurité est dans la base).
+  supabase: { url: "", anonKey: "" },
+  // (facultatif) lien "Build hook" Netlify : sert au bouton "Mettre à jour les aperçus de partage" de l'espace admin
+  buildHook: "",
+  // Adresse du site (nom de domaine du client) : sert aux aperçus de partage
+  siteUrl: "https://cbf-guangzhou.com",
   // Autres numéros du flyer du client (affichés sur la page Contact)
   autresNumeros: [
     { label: "Chine", num: "+86 195 7486 4821" },

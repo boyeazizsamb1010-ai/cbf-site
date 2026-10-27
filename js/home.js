@@ -1,6 +1,6 @@
 // Accueil : carrousel + véhicules vedettes
-(function () {
-  const vedettes = window.VEHICULES.filter(v => v.vedette);
+window.avecDonnees(function () {
+  const vedettes = window.VEHICULES.filter(v => v.vedette && v.statut !== "vendu");
   const slides = vedettes.length ? vedettes : window.VEHICULES.slice(0, 3);
   const hero = document.getElementById("hero");
 
@@ -52,4 +52,4 @@
   document.getElementById("vedettes").innerHTML = window.VEHICULES.slice(0, 4).map(carteVehicule).join("");
   document.getElementById("cta-wa").href = lienWA(t("wa.cars"));
   apparitions();
-})();
+});

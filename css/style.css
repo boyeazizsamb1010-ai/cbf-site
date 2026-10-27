@@ -307,3 +307,8 @@ html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3 { letter-spacing: 0; 
 @media (max-width: 860px) { .langues { margin: 14px 0 0; } }
 .footer-bas { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 .footer-bas .langues { margin: 0; }
+
+/* véhicule vendu */
+.badge.vendu { background: #6b7280; }
+.carte-vendue .carte-img img { filter: grayscale(1); opacity: .7; }
+.stock.vendu { color: #6b7280; }

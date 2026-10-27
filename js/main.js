@@ -81,9 +81,11 @@
   };
   // Photos : "g" = grande (fiche), "m" = petite (cartes, miniatures). Les noms dans data.js peuvent garder .jpg
   const base = p => p.replace(/\.[a-z0-9]+$/i, "");
-  window.photosDe = v => (v.photos && v.photos.length ? v.photos.map(p => "images/vehicules/g/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
-  window.miniDe = v => (v.photos && v.photos.length ? v.photos.map(p => "images/vehicules/m/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
-  window.ogDe = v => (v.photos && v.photos.length ? "images/vehicules/og/" + base(v.photos[0]) + ".jpg" : "images/logo-complet.jpg");
+  // Une photo peut être un nom de fichier du site ("xxx.jpg") ou une adresse complète (photo ajoutée depuis l'espace admin)
+  const estUrl = p => /^https?:\/\//i.test(p);
+  window.photosDe = v => (v.photos && v.photos.length ? v.photos.map(p => estUrl(p) ? p : "images/vehicules/g/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
+  window.miniDe = v => (v.photos && v.photos.length ? v.photos.map(p => estUrl(p) ? p.replace("/g/", "/m/") : "images/vehicules/m/" + base(p) + ".webp") : [window.imagePlaceholder(v)]);
+  window.ogDe = v => (v.photos && v.photos.length ? (estUrl(v.photos[0]) ? v.photos[0] : "images/vehicules/og/" + base(v.photos[0]) + ".jpg") : "images/logo-complet.jpg");
   // si une photo est introuvable, on remet l'image par défaut
   window.imgSecours = (img, id) => {
     const v = window.VEHICULES.find(x => x.id === id);
@@ -94,10 +96,10 @@
   window.carteVehicule = function (v) {
     const photo = miniDe(v)[0];
     return (
-      '<a class="carte" href="vehicule.html?id=' + v.id + '">' +
+      '<a class="carte' + (v.statut === "vendu" ? " carte-vendue" : "") + '" href="vehicule.html?id=' + v.id + '">' +
       '<div class="carte-img"><img src="' + photo + '" alt="' + nomArticle(v) + '" loading="lazy" decoding="async" onerror="imgSecours(this,\'' + v.id + '\')">' +
       '<button class="coeur' + (favoris.est(v.id) ? " actif" : "") + '" data-fav="' + v.id + '" aria-label="' + t("card.fav") + '" aria-pressed="' + favoris.est(v.id) + '"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.4 5c2 0 3.6 1.1 4.6 2.7C12 6.1 13.600 5 15.600 5 19 5 20.800 8.600 19.500 11.800 17.500 16.400 12 21 12 21z"/></svg></button>' +
-      '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (tv(v.etat) || "") + "</span></div>" +
+      (v.statut === "vendu" ? '<span class="badge vendu">' + t("badge.sold") + "</span>" : '<span class="badge ' + (v.etat === "Neuf" ? "neuf" : "") + '">' + (tv(v.etat) || "") + "</span>") + "</div>" +
       '<div class="carte-corps"><span class="carte-cat">' + tv(v.categorie) + "</span>" +
       '<span class="carte-titre">' + nomArticle(v) + (v.annee ? " " + v.annee : "") + "</span>" +
       '<span class="carte-prix">' + fmtPrix(v.prix) + (v.ancienPrix ? "<s>" + fmtPrix(v.ancienPrix) + "</s>" : "") + "</span>" +

@@ -66,6 +66,8 @@
     "card.see": ["Voir la fiche →", "View details →", "查看详情 →"],
     "card.fav": ["Ajouter aux favoris", "Add to favourites", "加入收藏"],
     "fiche.notfound": ["Véhicule introuvable", "Vehicle not found", "未找到该车辆"],
+    "badge.sold": ["Vendu", "Sold", "已售"],
+    "fiche.soldout": ["Ce véhicule a été vendu. Contactez-nous pour des modèles similaires.", "This vehicle has been sold. Contact us for similar models.", "该车已售出，欢迎联系我们了解类似车型。"],
     "fiche.sold": ["Il a peut-être été vendu.", "It may have been sold.", "可能已售出。"],
     "fiche.back": ["Retour au catalogue", "Back to the catalog", "返回目录"],
     "photo.prev": ["Photo précédente", "Previous photo", "上一张"],

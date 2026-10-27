@@ -1,5 +1,5 @@
 // Fiche véhicule : galerie + agrandissement, partage, favoris, barre WhatsApp mobile, articles similaires
-(function () {
+window.avecDonnees(function () {
   const zone = document.getElementById("fiche-zone");
   const id = window.VEHICULE_ID || new URLSearchParams(location.search).get("id");
   const v = window.VEHICULES.find(x => x.id === id);
@@ -45,7 +45,7 @@
     (v.notePrix ? '<div class="carte-meta" style="margin-bottom:6px">' + tv(v.notePrix) + "</div>" : "") +
     (v.prix && LANG !== "fr" ? '<div class="carte-meta" style="margin-bottom:6px;font-size:.82rem">' + t("price.ref", { x: fmtPrixCFA(v.prix) }) + " · " + t("price.note") + "</div>" : "") +
     (points.length ? '<div class="points-cles">' + points.map(p => "<span>" + p + "</span>").join("") + "</div>" : "") +
-    (v.stock ? '<div class="stock">' + (v.stock > 1 ? t("stock.n", { n: v.stock }) : t("stock.1")) + "</div>" : "") +
+    (v.statut === "vendu" ? '<div class="stock vendu">' + t("fiche.soldout") + "</div>" : v.stock ? '<div class="stock">' + (v.stock > 1 ? t("stock.n", { n: v.stock }) : t("stock.1")) + "</div>" : "") +
     '<p class="fiche-desc">' + descDe(v) + "</p>" +
     '<div class="fiche-actions">' +
     '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">' + t("btn.wa") + '</a>' +
@@ -121,4 +121,4 @@
     document.getElementById("similaires").innerHTML =
       '<section class="similaires"><h2>' + t("similar") + '</h2><div class="grille">' + sim.map(carteVehicule).join("") + "</div></section>";
   }
-})();
+});

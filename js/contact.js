@@ -22,6 +22,7 @@
     const email = document.getElementById("email").value.trim();
     const tel = document.getElementById("tel").value.trim();
     const texte = t("wa.iam", { nom: nom.value.trim() }) + (tel ? t("wa.tel", { x: tel }) : "") + (email ? t("wa.email", { x: email }) : "") + "\n\n" + msg.value.trim();
+    if (window.sb) window.sb.envoyerMessage({ nom: nom.value.trim(), telephone: tel || null, email: email || null, message: msg.value.trim(), vehicule_id: new URLSearchParams(location.search).get("v") || null, langue: window.LANG || "fr" });
     window.open(lienWA(texte), "_blank", "noopener");
   });
 })();

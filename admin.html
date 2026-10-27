@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Espace admin – Cheikh Baye Fall Cargo</title>
+  <link rel="icon" href="images/logo-emblem.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: var(--fond); }
+    .adm-top { background: var(--vert-fonce); color: #fff; padding: 12px 0; position: sticky; top: 0; z-index: 20; }
+    .adm-top .container { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .adm-top h1 { font-size: 1.05rem; margin: 0; flex: 1; color: #fff; }
+    .adm-top button { background: transparent; border: 1px solid rgba(255,255,255,.4); color: #fff; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+    .adm-onglets { display: flex; gap: 6px; margin: 18px 0; flex-wrap: wrap; }
+    .adm-onglets button { border: 1px solid #cfd6e6; background: #fff; border-radius: 99px; padding: 8px 16px; font-weight: 600; cursor: pointer; color: var(--texte); }
+    .adm-onglets button.actif { background: var(--vert-fonce); color: #fff; border-color: var(--vert-fonce); }
+    .pastille { background: var(--rouge); color: #fff; border-radius: 99px; font-size: .72rem; padding: 1px 7px; margin-left: 6px; }
+    .adm-box { background: #fff; border-radius: 14px; box-shadow: 0 1px 6px rgba(11,31,77,.08); padding: 18px; margin-bottom: 16px; }
+    .adm-login { max-width: 380px; margin: 60px auto; }
+    .adm-login label, .adm-form label { display: block; font-size: .82rem; font-weight: 600; margin: 10px 0 4px; color: var(--gris); }
+    .adm-login input, .adm-form input, .adm-form select, .adm-form textarea { width: 100%; padding: 10px 12px; border: 1px solid #cfd6e6; border-radius: 8px; font: inherit; background: #fff; }
+    .adm-form textarea { min-height: 90px; resize: vertical; }
+    .adm-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 14px; }
+    .adm-btn { background: var(--vert-fonce); color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font-weight: 700; cursor: pointer; font: inherit; font-weight: 700; }
+    .adm-btn.sec { background: #fff; color: var(--vert-fonce); border: 1px solid #cfd6e6; }
+    .adm-btn.dang { background: #fff; color: #c0392b; border: 1px solid #e7b9b3; }
+    .adm-btn.petit { padding: 6px 10px; font-size: .82rem; }
+    .adm-btn:disabled { opacity: .5; cursor: wait; }
+    .adm-msg { padding: 10px 14px; border-radius: 8px; margin: 10px 0; font-size: .9rem; }
+    .adm-msg.err { background: #fdecea; color: #a1281c; } .adm-msg.ok { background: #e7f6ec; color: #1b6b34; }
+    .adm-ligne { display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid #eef0f6; flex-wrap: wrap; }
+    .adm-ligne:last-child { border-bottom: 0; }
+    .adm-ligne img { width: 84px; height: 62px; object-fit: cover; border-radius: 8px; background: #e8ecf4; }
+    .adm-ligne .nom { flex: 1; min-width: 160px; } .adm-ligne .nom strong { display: block; }
+    .adm-ligne .nom small { color: var(--gris); }
+    .adm-ligne select { padding: 7px; border-radius: 8px; border: 1px solid #cfd6e6; }
+    .adm-ligne.vendu img { filter: grayscale(1); opacity: .6; }
+    .adm-photos { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0; }
+    .adm-photos figure { margin: 0; width: 120px; text-align: center; font-size: .75rem; }
+    .adm-photos img { width: 120px; height: 90px; object-fit: cover; border-radius: 8px; display: block; background: #e8ecf4; }
+    .adm-photos figure.princ img { outline: 3px solid var(--or); }
+    .adm-photos .acts { display: flex; gap: 3px; justify-content: center; margin-top: 4px; }
+    .adm-photos .acts button { padding: 3px 7px; border: 1px solid #cfd6e6; background: #fff; border-radius: 6px; cursor: pointer; }
+    .adm-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .adm-kpis div { background: #fff; border-radius: 14px; padding: 16px; box-shadow: 0 1px 6px rgba(11,31,77,.08); }
+    .adm-kpis b { display: block; font-size: 1.7rem; color: var(--vert-fonce); }
+    .barres { display: flex; align-items: flex-end; gap: 3px; height: 130px; margin-top: 8px; }
+    .barres span { flex: 1; background: var(--vert); border-radius: 3px 3px 0 0; min-height: 2px; position: relative; }
+    .liste-k { list-style: none; padding: 0; margin: 0; } .liste-k li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #f0f2f8; font-size: .92rem; }
+    .msg-carte { border-left: 4px solid #cfd6e6; padding: 10px 14px; margin-bottom: 12px; background: #fff; border-radius: 0 12px 12px 0; box-shadow: 0 1px 6px rgba(11,31,77,.06); }
+    .msg-carte.nonlu { border-left-color: var(--rouge); }
+    .msg-carte p { white-space: pre-wrap; margin: 8px 0; }
+    .msg-carte small { color: var(--gris); }
+    .cache { display: none !important; }
+  </style>
+</head>
+<body>
+  <div id="login" class="adm-box adm-login cache">
+    <img src="images/logo-complet.jpg" alt="" style="max-width:160px;display:block;margin:0 auto 10px">
+    <h2 style="text-align:center;margin:0 0 6px">Espace admin</h2>
+    <form id="f-login" class="adm-form">
+      <label for="l-email">Email</label><input id="l-email" type="email" autocomplete="username" required>
+      <label for="l-mdp">Mot de passe</label><input id="l-mdp" type="password" autocomplete="current-password" required>
+      <div id="l-err"></div>
+      <button class="adm-btn" style="width:100%;margin-top:14px" type="submit">Se connecter</button>
+    </form>
+  </div>
+  <div id="non-configure" class="adm-box adm-login cache">
+    <h2>Base de données non configurée</h2>
+    <p>Remplissez <code>supabase.url</code> et <code>supabase.anonKey</code> dans <code>js/config.js</code> (voir le guide d'installation).</p>
+  </div>
+
+  <div id="app" class="cache">
+    <header class="adm-top"><div class="container">
+      <h1>Espace admin – Cheikh Baye Fall Cargo</h1>
+      <a href="index.html" style="color:#fff;font-size:.9rem" target="_blank">Voir le site ↗</a>
+      <button id="b-sortir" type="button">Déconnexion</button>
+    </div></header>
+    <main class="container" style="padding-bottom:60px">
+      <nav class="adm-onglets" id="onglets">
+        <button data-o="vehicules" class="actif">Véhicules</button>
+        <button data-o="messages">Messages <span id="p-msg" class="pastille cache">0</span></button>
+        <button data-o="stats">Statistiques</button>
+      </nav>
+      <div id="flash"></div>
+      <section id="o-vehicules"></section>
+      <section id="o-messages" class="cache"></section>
+      <section id="o-stats" class="cache"></section>
+    </main>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

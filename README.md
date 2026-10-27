@@ -20,8 +20,8 @@ Sans photo, une image par défaut s'affiche. Pour retirer un véhicule vendu, su
 2. Glisser-déposer le dossier du site.
 3. Plus tard, brancher le nom de domaine du client (au nom du client).
 
-## Limites de la version 1
-Les véhicules sont dans un fichier : le client ne peut pas les modifier seul. La version 2 ajoutera un back-office avec base de données.
+## Version 2 : espace admin (Supabase)
+`admin.html` permet au client de gérer véhicules, photos, statut vendu/en stock, messages et statistiques. Installation : `supabase/GUIDE-INSTALLATION.md`. Tant que `supabase` est vide dans `js/config.js`, le site lit `js/data.js` (version 1). Si la base ne répond pas, le site se rabat aussi sur `js/data.js`.
 
 ## Photos (version rapide)
 Le site utilise des photos WebP en deux tailles : `images/vehicules/m/` (cartes) et `images/vehicules/g/` (fiche), plus `images/vehicules/og/` (aperçu WhatsApp de la 1re photo).
