@@ -1,3 +1,4 @@
+# fichiers qui ne doivent PAS être publiés sur le site
 .git
 .gitignore
 node_modules
