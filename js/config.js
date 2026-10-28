@@ -19,7 +19,7 @@ window.SITE = {
   // Laisser vide = le site utilise js/data.js. La clé "anonKey" est publique par conception (la sécurité est dans la base).
   supabase: { url: "https://eixkzrusoswayoimprry.supabase.co", anonKey: "sb_publishable_n5bRd0y8SKsxgTXDkMusTg_iFX_7Gv0" },
   // (facultatif) lien "Build hook" Netlify : sert au bouton "Mettre à jour les aperçus de partage" de l'espace admin
-  buildHook: "",
+  buildHook: "https://api.cloudflare.com/client/v4/workers/builds/deploy_hooks/f88f5f02-f7b8-4574-b07e-54d3292f2997",
   // Adresse du site (nom de domaine du client) : sert aux aperçus de partage
   siteUrl: "https://cbf-guangzhou.com",
   // Autres numéros du flyer du client (affichés sur la page Contact)
