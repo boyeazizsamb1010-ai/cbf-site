@@ -1,0 +1,28 @@
+/* Commande avec acompte (fiche véhicule) */
+.btn-commande { grid-column: 1 / -1; background: var(--rouge); color: #fff; }
+.btn-commande:hover { background: #a9171f; }
+.cmd-fond { position: fixed; inset: 0; z-index: 120; background: rgba(5,12,32,.75); display: grid; place-items: center; padding: 14px; overflow-y: auto; }
+.cmd-fond[hidden] { display: none; }
+.cmd-boite { background: #fff; border-radius: 16px; width: 100%; max-width: 480px; max-height: 94vh; overflow-y: auto; padding: 22px 20px 20px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+.cmd-fermer { position: absolute; top: 8px; right: 12px; background: none; border: 0; font-size: 1.8rem; line-height: 1; cursor: pointer; color: var(--gris); }
+.cmd-boite h2 { font-size: 1.2rem; margin: 0 28px 4px 0; color: var(--vert-fonce); }
+.cmd-veh { color: var(--gris); font-size: .9rem; margin-bottom: 12px; }
+.cmd-prix { background: var(--vert-clair); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: .92rem; }
+.cmd-prix div { display: flex; justify-content: space-between; gap: 10px; padding: 2px 0; }
+.cmd-prix .acompte { font-weight: 800; color: var(--rouge); font-size: 1.05rem; border-top: 1px solid #cfd6e6; margin-top: 6px; padding-top: 8px; }
+.cmd-prix small { display: block; color: var(--gris); margin-top: 6px; }
+.cmd-form label { display: block; font-size: .82rem; font-weight: 600; margin: 10px 0 4px; color: var(--gris); }
+.cmd-form input, .cmd-form textarea { width: 100%; padding: 11px 12px; border: 1px solid #cfd6e6; border-radius: 10px; font: inherit; background: #fff; }
+.cmd-form textarea { min-height: 70px; resize: vertical; }
+.cmd-form .err { outline: 2px solid #c0392b; }
+.cmd-form .cmd-hp { position: absolute; left: -9999px; height: 0; width: 0; opacity: 0; }
+.cmd-cond { font-size: .8rem; color: var(--gris); margin-top: 12px; }
+.cmd-erreur { background: #fdecea; color: #a1281c; padding: 10px 12px; border-radius: 10px; margin-top: 12px; font-size: .88rem; }
+.cmd-ok-ref { text-align: center; font-size: 1.5rem; font-weight: 800; letter-spacing: .08em; color: var(--vert-fonce); background: var(--vert-clair); border-radius: 12px; padding: 10px; margin: 10px 0; }
+.cmd-coord { border: 1px solid #cfd6e6; border-radius: 12px; padding: 12px 14px; margin: 12px 0; font-size: .92rem; }
+.cmd-coord div { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; flex-wrap: wrap; }
+.cmd-coord span:first-child { color: var(--gris); }
+.cmd-coord b { word-break: break-all; text-align: right; }
+.cmd-note { font-size: .86rem; color: var(--gris); margin: 8px 0; }
+.cmd-boite .btn { width: 100%; margin-top: 10px; }
+@media (max-width: 760px) { .btn-commande { order: -1; } }

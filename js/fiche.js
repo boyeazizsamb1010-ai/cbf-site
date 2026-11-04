@@ -57,6 +57,10 @@ window.avecDonnees(function () {
     '<div id="similaires"></div>' +
     '<div class="barre-wa"><div><strong>' + fmtPrix(v.prix) + '</strong><small>' + nom + '</small></div><a class="btn btn-wa" target="_blank" rel="noopener" href="' + lienWhats + '">' + t("bar.wa") + '</a></div>';
 
+  // la commande en ligne (js/commande.js) s'accroche ici
+  window.FICHE_COURANTE = v;
+  document.dispatchEvent(new CustomEvent("fiche:prete", { detail: v }));
+
   // ---------- Galerie ----------
   const grande = document.getElementById("grande");
   const compte = document.getElementById("gp-compte");

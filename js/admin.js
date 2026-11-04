@@ -9,6 +9,7 @@
   let session = null;
   let vehicules = [];
   let messages = [];
+  let commandes = [];
 
   if (!URL_BASE || !cfg.anonKey) { $("non-configure").classList.remove("cache"); return; }
 
@@ -80,9 +81,10 @@
   $("onglets").addEventListener("click", e => {
     const b = e.target.closest("button[data-o]"); if (!b) return;
     document.querySelectorAll("#onglets button").forEach(x => x.classList.toggle("actif", x === b));
-    ["vehicules", "messages", "stats"].forEach(o => $("o-" + o).classList.toggle("cache", o !== b.dataset.o));
+    ["vehicules", "messages", "commandes", "stats"].forEach(o => $("o-" + o).classList.toggle("cache", o !== b.dataset.o));
     if (b.dataset.o === "vehicules") chargerVehicules();
     if (b.dataset.o === "messages") chargerMessages();
+    if (b.dataset.o === "commandes") chargerCommandes();
     if (b.dataset.o === "stats") chargerStats(30);
     $("flash").innerHTML = "";
   });
@@ -291,6 +293,62 @@
   }
 
   // ============================================================
+  //  COMMANDES (acompte 50 %)
+  // ============================================================
+  const STATUTS = [["nouvelle", "Nouvelle"], ["contactee", "Client contacté"], ["acompte_recu", "Acompte reçu"], ["expediee", "Expédiée"], ["terminee", "Terminée"], ["annulee", "Annulée"]];
+  async function chargerCommandes() {
+    try { commandes = await api("/rest/v1/commandes?select=*&order=created_at.desc&limit=300"); } catch (e) { flash("Impossible de charger les commandes : " + e.message + " (avez-vous lancé supabase/3-commandes.sql ?)", false); return; }
+    majPastilleCmd();
+    const zone = $("o-commandes");
+    zone.innerHTML = commandes.length ? commandes.map(c => {
+      const tel = (c.telephone || "").replace(/[^\d]/g, "");
+      const msgWA = "Bonjour " + c.nom + ", c'est Cheikh Baye Fall Cargo au sujet de votre commande " + c.reference + " (" + (c.vehicule_nom || c.vehicule_id) + "). ";
+      return '<div class="msg-carte' + (c.statut === "nouvelle" ? " nonlu" : "") + '" data-id="' + esc(c.id) + '">' +
+        "<strong>" + esc(c.reference || "") + " · " + esc(c.vehicule_nom || c.vehicule_id) + "</strong> <small>" + new Date(c.created_at).toLocaleString("fr-FR") + (c.langue ? " · " + esc(c.langue) : "") + "</small>" +
+        "<p><b>" + esc(c.nom) + "</b> · 📞 " + esc(c.telephone) + (c.email ? " · ✉ " + esc(c.email) : "") + (c.ville ? " · " + esc(c.ville) : "") + "</p>" +
+        "<p>Prix : " + esc(fmtPrix(c.prix)) + " · <b>Acompte 50 % : " + esc(fmtPrix(c.acompte)) + "</b></p>" +
+        (c.message ? "<p>« " + esc(c.message) + " »</p>" : "") +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">' +
+        '<select data-c="statut" aria-label="Statut de la commande">' + STATUTS.map(s => '<option value="' + s[0] + '"' + (c.statut === s[0] ? " selected" : "") + ">" + s[1] + "</option>").join("") + "</select>" +
+        (tel ? '<a class="adm-btn petit" style="text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/' + tel + "?text=" + encodeURIComponent(msgWA) + '">Répondre sur WhatsApp</a>' : "") +
+        (c.statut === "acompte_recu" ? '<button class="adm-btn sec petit" data-c="vendu" title="Passe le véhicule en « Vendu » sur le site">Marquer le véhicule vendu</button>' : "") +
+        '<button class="adm-btn dang petit" data-c="x">Supprimer</button></div>' +
+        '<label style="display:block;font-size:.78rem;color:var(--gris);margin-top:8px">Note interne (visible seulement ici)</label>' +
+        '<textarea data-c="note" rows="2" style="width:100%;padding:8px;border:1px solid #cfd6e6;border-radius:8px;font:inherit">' + esc(c.note_admin || "") + "</textarea></div>";
+    }).join("") : '<div class="adm-box">Aucune commande pour le moment.</div>';
+    zone.onchange = async e => {
+      const el = e.target.closest("[data-c]"); if (!el) return;
+      const id = el.closest(".msg-carte").dataset.id;
+      try {
+        if (el.dataset.c === "statut") { await api("/rest/v1/commandes?id=eq." + id, { method: "PATCH", json: { statut: el.value } }); flash("Statut enregistré."); chargerCommandes(); }
+        if (el.dataset.c === "note") { await api("/rest/v1/commandes?id=eq." + id, { method: "PATCH", json: { note_admin: el.value.trim() || null } }); flash("Note enregistrée."); }
+      } catch (er) { flash("Échec : " + er.message, false); }
+    };
+    zone.onclick = async e => {
+      const b = e.target.closest("button[data-c]"); if (!b) return;
+      const id = b.closest(".msg-carte").dataset.id, c = commandes.find(x => x.id === id);
+      try {
+        if (b.dataset.c === "vendu") {
+          if (!confirm("Passer « " + (c.vehicule_nom || c.vehicule_id) + " » en « Vendu » sur le site ?")) return;
+          await api("/rest/v1/vehicules?id=eq." + encodeURIComponent(c.vehicule_id), { method: "PATCH", json: { statut: "vendu" } });
+          flash("Véhicule marqué comme vendu.");
+        } else if (b.dataset.c === "x") {
+          if (!confirm("Supprimer cette commande définitivement ?")) return;
+          await api("/rest/v1/commandes?id=eq." + id, { method: "DELETE" });
+          chargerCommandes();
+        }
+      } catch (er) { flash("Échec : " + er.message, false); }
+    };
+  }
+  function majPastilleCmd() {
+    const n = commandes.filter(c => c.statut === "nouvelle").length;
+    $("p-cmd").textContent = n; $("p-cmd").classList.toggle("cache", !n);
+  }
+  async function compterCommandes() {
+    try { const r = await api("/rest/v1/commandes?select=id&statut=eq.nouvelle&limit=100"); $("p-cmd").textContent = r.length; $("p-cmd").classList.toggle("cache", !r.length); } catch (e) {}
+  }
+
+  // ============================================================
   //  STATISTIQUES
   // ============================================================
   async function chargerStats(jours) {
@@ -320,7 +378,7 @@
   // ---------- Démarrage ----------
   async function demarrer() {
     $("login").classList.add("cache"); $("app").classList.remove("cache");
-    await chargerVehicules(); compterNonLus();
+    await chargerVehicules(); compterNonLus(); compterCommandes();
   }
   session = lireSession();
   if (session) demarrer(); else $("login").classList.remove("cache");
