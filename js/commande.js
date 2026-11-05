@@ -41,6 +41,7 @@
   };
   const tr = (k, vars) => (D[k][IDX[L()]] || D[k][0]).replace(/\{(\w+)\}/g, (m, x) => (vars && vars[x] !== undefined ? vars[x] : m));
   const esc = s => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const pick = x => (x && typeof x === "object") ? (x[L()] || x.fr || "") : (x || "");
   const fcfa = n => new Intl.NumberFormat("fr-FR").format(n).replace(/[\u202f\u00a0]/g, " ") + " FCFA";
 
   function uuid() {
@@ -89,7 +90,7 @@
         '<label for="cmd-ville">' + esc(tr("ville")) + '</label><input id="cmd-ville" autocomplete="address-level2" maxlength="200">' +
         '<label for="cmd-msg">' + esc(tr("msg")) + '</label><textarea id="cmd-msg" maxlength="3000"></textarea>' +
         '<input class="cmd-hp" id="cmd-hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-        '<div class="cmd-cond">' + esc(tr("cond")) + (P.conditions ? "<br><br>" + esc(P.conditions) : "") + "</div>" +
+        '<div class="cmd-cond">' + esc(tr("cond")) + (pick(P.conditions) ? "<br><br>" + esc(pick(P.conditions)) : "") + "</div>" +
         '<div id="cmd-err"></div><button class="btn btn-commande" id="cmd-envoyer" type="submit">' + esc(tr("envoyer")) + "</button></form>");
       document.getElementById("cmd-form").addEventListener("submit", envoyer);
       setTimeout(() => { const i = document.getElementById("cmd-nom"); if (i) i.focus(); }, 50);
@@ -136,7 +137,7 @@
         "<p><strong>" + esc(lignes.length ? tr("payer", { x: fcfa(acompte) }) : tr("aucune", { x: fcfa(acompte) })) + "</strong></p>" +
         (lignes.length ? '<div class="cmd-coord">' + lignes.map(l => "<div><span>" + esc(tr(l[0])) + "</span><b>" + esc(l[1]) + "</b></div>").join("") + "<div><span>" + esc(tr("ref")) + "</span><b>" + esc(ref) + "</b></div></div>" : "") +
         '<p class="cmd-note">' + esc(tr("preuve")) + "</p>" +
-        '<p class="cmd-note">' + esc(P.texteSolde || tr("soldeDef", { y: fcfa(solde) })) + "</p>" +
+        '<p class="cmd-note">' + esc(pick(P.texteSolde) ? pick(P.texteSolde).replace(/\{y\}/g, fcfa(solde)) : tr("soldeDef", { y: fcfa(solde) })) + "</p>" +
         '<a class="btn btn-wa" target="_blank" rel="noopener" href="' + lien + '">' + esc(tr("waBtn")) + '</a><button class="btn btn-ligne" type="button" id="cmd-ferme">' + esc(tr("fermer")) + "</button>");
       document.getElementById("cmd-ferme").addEventListener("click", fermer);
     }
