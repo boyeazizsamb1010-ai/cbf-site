@@ -1,0 +1,5 @@
+Logos des moyens de paiement (affichés dans le formulaire de commande).
+Placez ici les logos OFFICIELS (téléchargés sur le site de Wave / d'Orange, rubrique presse ou marque) :
+  wave.png          (fond transparent ou blanc, environ 200 px de large)
+  orange-money.png
+Sans fichier, le site affiche simplement le nom en texte. Un logo n'apparaît que si le moyen de paiement est rempli dans js/paiement.js.

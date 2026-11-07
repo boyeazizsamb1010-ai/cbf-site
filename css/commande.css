@@ -26,3 +26,6 @@
 .cmd-note { font-size: .86rem; color: var(--gris); margin: 8px 0; }
 .cmd-boite .btn { width: 100%; margin-top: 10px; }
 @media (max-width: 760px) { .btn-commande { order: -1; } }
+.cmd-moyens { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .85rem; color: var(--gris); margin: -4px 0 12px; }
+.cmd-logo { display: inline-flex; align-items: center; min-height: 32px; padding: 3px 10px; border: 1px solid #cfd6e6; border-radius: 8px; background: #fff; color: var(--vert-fonce); font-size: .82rem; }
+.cmd-logo img { height: 24px; width: auto; display: block; }

@@ -33,6 +33,8 @@
     preuve: ["Après le paiement, envoyez la preuve (capture d'écran ou numéro de transaction) avec votre référence sur WhatsApp.", "After paying, send the proof (screenshot or transaction number) with your reference on WhatsApp.", "付款后，请通过 WhatsApp 发送付款凭证（截图或交易号）和您的订单编号。"],
     soldeDef: ["Le solde ({y}) se règle ensuite, selon les modalités que CBF vous communiquera.", "The balance ({y}) is paid afterwards, as CBF will explain.", "尾款（{y}）之后按 CBF 告知的方式支付。"],
     waBtn: ["Envoyer la preuve sur WhatsApp", "Send proof on WhatsApp", "通过 WhatsApp 发送凭证"],
+    moyens: ["Paiement de l'acompte par :", "Pay the deposit by:", "预付款支付方式："],
+    virement: ["Virement bancaire", "Bank transfer", "银行转账"],
     fermer: ["Fermer", "Close", "关闭"],
     benef: ["Bénéficiaire", "Beneficiary", "收款人"], banque: ["Banque", "Bank", "银行"], rib: ["RIB / IBAN", "Account / IBAN", "账号 / IBAN"],
     swift: ["SWIFT / BIC", "SWIFT / BIC", "SWIFT / BIC"], wave: ["Wave", "Wave", "Wave"], om: ["Orange Money", "Orange Money", "Orange Money"],
@@ -51,6 +53,15 @@
     return s.slice(0, 8) + "-" + s.slice(8, 12) + "-4" + s.slice(13, 16) + "-8" + s.slice(17, 20) + "-" + s.slice(20);
   }
   const entetes = () => Object.assign({ apikey: window.sb.cle, "Content-Type": "application/json", Prefer: "return=minimal" }, /^eyJ/.test(window.sb.cle || "") ? { Authorization: "Bearer " + window.sb.cle } : {});
+
+  // Moyens de paiement acceptés (logos dans images/paiement/ ; sans fichier, le nom s'affiche en texte)
+  function puces() {
+    const m = [["wave", P.wave, "Wave"], ["orange-money", P.orangeMoney, "Orange Money"], ["virement", P.rib, ""]].filter(x => x[1]);
+    if (!m.length) return "";
+    return '<div class="cmd-moyens"><span>' + esc(tr("moyens")) + "</span>" + m.map(x => x[2]
+      ? '<b class="cmd-logo"><img src="images/paiement/' + x[0] + '.png" alt="' + x[2] + '" height="24" onerror="this.parentNode.textContent=this.alt"></b>'
+      : '<b class="cmd-logo">' + esc(tr("virement")) + "</b>").join("") + "</div>";
+  }
 
   let fond = null;
   function fermer() { if (fond) { fond.hidden = true; document.body.style.overflow = ""; } }
@@ -83,6 +94,7 @@
         "<h2>" + esc(tr("titre")) + '</h2><div class="cmd-veh">' + esc(nom) + (v.notePrix ? " · " + esc(window.tv ? tv(v.notePrix) : v.notePrix) : "") + "</div>" +
         '<div class="cmd-prix"><div><span>' + esc(tr("prix")) + "</span><span>" + esc(aff(v.prix)) + '</span></div><div class="acompte"><span>' + esc(tr("acompte")) + "</span><span>" + esc(aff(acompte)) + "</span></div><div><span>" + esc(tr("solde")) + "</span><span>" + esc(aff(solde)) + "</span></div>" +
         (L() !== "fr" ? "<small>" + esc(tr("indic")) + "</small>" : "") + "</div>" +
+        puces() +
         '<form class="cmd-form" id="cmd-form" novalidate>' +
         '<label for="cmd-nom">' + esc(tr("nom")) + '</label><input id="cmd-nom" autocomplete="name" maxlength="200">' +
         '<label for="cmd-tel">' + esc(tr("tel")) + '</label><input id="cmd-tel" type="tel" autocomplete="tel" maxlength="60" placeholder="+221 …">' +
