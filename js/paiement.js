@@ -14,7 +14,7 @@ window.SITE.paiement = {
   // LIENS DE PAIEMENT (facultatifs) : si rempli, un bouton "Payer l'acompte avec Wave" s'affiche après la commande et ouvre Wave du client.
   // Doit commencer par https://. {montant} est remplacé par l'acompte (si le lien le supporte).
   // Wave : lien du compte Wave Business de CBF, ex. "https://pay.wave.com/m/M_sn_XXXXXXXX/c/sn/?amount={montant}"
-  waveLien: "https://pay.wave.com/m/M_sn_PN_kgicgKkdE/c/sn/.",
+  waveLien: "https://pay.wave.com/m/M_sn_PN_kgicgKkdE/c/sn/amount={4500000}",
   orangeMoneyLien: "",
   // Texte sur le solde (affiché après la commande). {y} = montant du solde. Texte simple, ou { fr, en, zh } pour les 3 langues.
   texteSolde: {
