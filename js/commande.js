@@ -34,6 +34,7 @@
     soldeDef: ["Le solde ({y}) se règle ensuite, selon les modalités que CBF vous communiquera.", "The balance ({y}) is paid afterwards, as CBF will explain.", "尾款（{y}）之后按 CBF 告知的方式支付。"],
     waBtn: ["Envoyer la preuve sur WhatsApp", "Send proof on WhatsApp", "通过 WhatsApp 发送凭证"],
     moyens: ["Paiement de l'acompte par :", "Pay the deposit by:", "预付款支付方式："],
+    payerAvec: ["Payer l'acompte avec {m}", "Pay the deposit with {m}", "使用 {m} 支付预付款"],
     virement: ["Virement bancaire", "Bank transfer", "银行转账"],
     fermer: ["Fermer", "Close", "关闭"],
     benef: ["Bénéficiaire", "Beneficiary", "收款人"], banque: ["Banque", "Bank", "银行"], rib: ["RIB / IBAN", "Account / IBAN", "账号 / IBAN"],
@@ -61,6 +62,18 @@
     return '<div class="cmd-moyens"><span>' + esc(tr("moyens")) + "</span>" + m.map(x => x[2]
       ? '<b class="cmd-logo"><img src="images/paiement/' + x[0] + '.png" alt="' + x[2] + '" height="24" onerror="this.parentNode.textContent=this.alt"></b>'
       : '<b class="cmd-logo">' + esc(tr("virement")) + "</b>").join("") + "</div>";
+  }
+
+  // Boutons "Payer avec Wave / Orange Money" : s'affichent après la commande, seulement si un lien de paiement est renseigné dans paiement.js
+  function boutonsPayer(acompte) {
+    const m = [["wave", P.waveLien, "Wave"], ["orange-money", P.orangeMoneyLien, "Orange Money"]]
+      .filter(x => /^https:\/\//i.test(x[1] || ""));
+    if (!m.length) return "";
+    return '<div class="cmd-payer">' + m.map(x => {
+      const href = x[1].replace(/\{montant\}/g, String(acompte));
+      return '<a class="btn cmd-payer-btn cmd-payer-' + x[0] + '" target="_blank" rel="noopener" href="' + href.replace(/"/g, "&quot;") + '">' +
+        '<img src="images/paiement/' + x[0] + '.png" alt="" height="22" onerror="this.remove()"> ' + esc(tr("payerAvec", { m: x[2] })) + "</a>";
+    }).join("") + "</div>";
   }
 
   let fond = null;
@@ -147,6 +160,7 @@
         "<h2>" + esc(tr("okTitre")) + '</h2><div class="cmd-veh">' + esc(nom) + "</div>" +
         "<div class=\"cmd-note\">" + esc(tr("ref")) + '</div><div class="cmd-ok-ref">' + esc(ref) + "</div>" +
         "<p><strong>" + esc(lignes.length ? tr("payer", { x: fcfa(acompte) }) : tr("aucune", { x: fcfa(acompte) })) + "</strong></p>" +
+        boutonsPayer(acompte) +
         (lignes.length ? '<div class="cmd-coord">' + lignes.map(l => "<div><span>" + esc(tr(l[0])) + "</span><b>" + esc(l[1]) + "</b></div>").join("") + "<div><span>" + esc(tr("ref")) + "</span><b>" + esc(ref) + "</b></div></div>" : "") +
         '<p class="cmd-note">' + esc(tr("preuve")) + "</p>" +
         '<p class="cmd-note">' + esc(pick(P.texteSolde) ? pick(P.texteSolde).replace(/\{y\}/g, fcfa(solde)) : tr("soldeDef", { y: fcfa(solde) })) + "</p>" +

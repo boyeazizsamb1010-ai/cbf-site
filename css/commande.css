@@ -28,4 +28,8 @@
 @media (max-width: 760px) { .btn-commande { order: -1; } }
 .cmd-moyens { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .85rem; color: var(--gris); margin: -4px 0 12px; }
 .cmd-logo { display: inline-flex; align-items: center; min-height: 32px; padding: 3px 10px; border: 1px solid #cfd6e6; border-radius: 8px; background: #fff; color: var(--vert-fonce); font-size: .82rem; }
+.cmd-payer { display: grid; gap: 8px; margin: 12px 0; }
+.cmd-payer-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff; color: var(--vert-fonce); border: 2px solid var(--vert-fonce); margin-top: 0 !important; }
+.cmd-payer-btn:hover { background: var(--vert-clair); }
+.cmd-payer-btn img { height: 22px; width: auto; }
 .cmd-logo img { height: 24px; width: auto; display: block; }

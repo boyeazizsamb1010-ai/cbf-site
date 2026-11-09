@@ -11,6 +11,11 @@ window.SITE.paiement = {
   swift: "",          // (facultatif) code SWIFT/BIC, utile pour un virement depuis l'étranger
   wave: "+221 77 839 37 21",           // (facultatif) numéro Wave qui reçoit, ex. "+221 77 000 00 00"
   orangeMoney: "+221 77 839 37 21",    // (facultatif) numéro Orange Money qui reçoit
+  // LIENS DE PAIEMENT (facultatifs) : si rempli, un bouton "Payer l'acompte avec Wave" s'affiche après la commande et ouvre Wave du client.
+  // Doit commencer par https://. {montant} est remplacé par l'acompte (si le lien le supporte).
+  // Wave : lien du compte Wave Business de CBF, ex. "https://pay.wave.com/m/M_sn_XXXXXXXX/c/sn/?amount={montant}"
+  waveLien: "https://pay.wave.com/m/M_sn_PN_kgicgKkdE/c/sn/.",
+  orangeMoneyLien: "",
   // Texte sur le solde (affiché après la commande). {y} = montant du solde. Texte simple, ou { fr, en, zh } pour les 3 langues.
   texteSolde: {
     fr: "Le solde ({y}) se règle à l'arrivée du véhicule au Port autonome de Dakar, par virement bancaire ou en espèces.",
