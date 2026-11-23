@@ -18,11 +18,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cargo.css">
 </head>
 <body>
   <header id="site-header" data-hero="true"></header>
 
   <section class="hero" id="hero" data-i18n-aria="hero.aria" aria-label="Véhicules à la une"></section>
+
+  <div class="container cg-bandeau">
+    <div class="cg-track">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span data-i18n="home.track.h">Suivre mon colis</span></h2>
+      <p data-i18n="home.track.p">Cheikh Baye Fall Cargo · Guangzhou → Sénégal</p>
+      <form class="cg-track-form" action="cargo.html" method="get">
+        <input name="suivi" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40" required data-i18n-ph="cg.suivi.ph" placeholder="Code de suivi ou téléphone" data-i18n-aria="cg.suivi.ph" aria-label="Code de suivi ou téléphone">
+        <button class="btn btn-rouge" type="submit" data-i18n="cg.suivi.btn">Suivre</button>
+      </form>
+    </div>
+  </div>
 
   <section class="section" id="rubriques-section">
     <div class="container">
@@ -30,6 +42,20 @@
       <h2 data-i18n="home.h1" style="margin-bottom:8px">Que recherchez-vous ?</h2>
       <p data-i18n="home.p1" style="color:var(--gris);margin-bottom:28px">Choisissez une rubrique : voitures neuves ou d'occasion, moteurs, tracteurs, camions, machines.</p>
       <div class="tuiles" id="rubriques"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cg-promo">
+        <div>
+          <div class="eyebrow" data-i18n="home.cargo.eyebrow">Nouveau : Cheikh Baye Fall Cargo</div>
+          <h2 data-i18n="home.cargo.h">Envoyez vos colis de Chine au Sénégal</h2>
+          <p data-i18n="home.cargo.p">Fret Standard ou Express au kilo, réservation en ligne et suivi de colis en temps réel.</p>
+          <a class="btn btn-rouge" href="cargo.html" data-i18n="home.cargo.btn">Découvrir le service Cargo</a>
+        </div>
+        <div class="cg-tarifs" id="home-cargo-tarifs"></div>
+      </div>
     </div>
   </section>
 

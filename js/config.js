@@ -27,6 +27,15 @@ window.SITE = {
     { label: "Chine", num: "+86 195 7486 4821" },
     { label: "Sénégal", num: "+221 77 839 37 21" }
   ],
+  // ----- Cheikh Baye Fall Cargo (fret Chine → Sénégal) -----
+  // Les tarifs et délais réels se modifient dans l'espace admin (onglet Cargo) ; ceux-ci servent seulement si la base ne répond pas.
+  cargo: {
+    whatsapp: "221778393721",            // numéro WhatsApp du service Cargo, SANS "+" ni espaces
+    whatsappAffiche: "+221 77 839 37 21",
+    tarifs: { standard: { prix_kg: 7800, delai_jours: 7 }, express: { prix_kg: 10500, delai_jours: 3 } },
+    // Adresse de dépôt des colis à Guangzhou (laisser "" : CBF l'envoie au client sur WhatsApp)
+    adresseDepot: ""
+  },
   // ----- Rubriques du site (accueil + catalogue) -----
   // "type" = valeur du champ type dans data.js (par défaut : "voiture")
   // "etat" = filtre facultatif (Neuf / Occasion)

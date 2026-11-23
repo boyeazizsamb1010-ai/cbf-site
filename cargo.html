@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheikh Baye Fall Cargo – Fret Chine → Sénégal et suivi de colis</title>
+  <meta name="description" content="Expédiez vos colis de Guangzhou vers le Sénégal : Fret Standard 7 jours à 7 800 FCFA/kg, Fret Express 3 jours à 10 500 FCFA/kg. Réservation en ligne et suivi de colis.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cheikh Baye Fall Cargo">
+  <meta property="og:title" content="Cheikh Baye Fall Cargo – Guangzhou → Sénégal">
+  <meta property="og:description" content="Fret Standard 7 jours : 7 800 FCFA/kg · Fret Express 3 jours : 10 500 FCFA/kg. Réservez en ligne et suivez votre colis.">
+  <meta property="og:url" content="https://cbf-guangzhou.com/cargo.html">
+  <meta property="og:image" content="https://cbf-guangzhou.com/images/logo-complet.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/logo-emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cargo.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <section class="cg-hero" id="suivi">
+    <div class="container cg-hero-in">
+      <div>
+        <div class="eyebrow" data-i18n="cg.eyebrow">Nouveau service</div>
+        <h1 data-i18n="cg.h1">Cheikh Baye Fall Cargo</h1>
+        <div class="cg-route"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span data-i18n="cg.route">Guangzhou → Sénégal</span></div>
+        <p class="cg-sub" data-i18n="cg.sub">Expédiez vos colis de la Chine vers le Sénégal en toute sécurité, rapidement et moins cher.</p>
+        <ul class="cg-atouts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span data-i18n="cg.b1">Fiable et sécurisé</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg><span data-i18n="cg.b2">Livraison rapide</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span data-i18n="cg.b3">Suivi de vos colis</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="6" rx="2"/><rect x="17" y="14" width="5" height="6" rx="2"/></svg><span data-i18n="cg.b4">Service client disponible</span></li>
+        </ul>
+        <div class="cg-actions">
+          <a class="btn btn-rouge" href="#reserver" data-i18n="cg.cta.book">Réserver une expédition</a>
+          <a class="btn btn-contour" id="cg-wa-hero" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="cg-track">
+        <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span data-i18n="cg.suivi.h">Où est mon colis ?</span></h2>
+        <p data-i18n="cg.suivi.p">Entrez votre code de suivi ou le numéro de téléphone donné au dépôt.</p>
+        <form class="cg-track-form" id="cg-suivi-form" novalidate>
+          <input id="cg-suivi-q" name="suivi" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40" data-i18n-ph="cg.suivi.ph" placeholder="Code de suivi ou téléphone" aria-label="Code de suivi ou téléphone">
+          <button class="btn btn-rouge" type="submit" data-i18n="cg.suivi.btn">Suivre</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="resultats" hidden style="padding-bottom:0">
+    <div class="container"><div class="cg-suivi-res" id="cg-suivi-res" aria-live="polite"></div></div>
+  </section>
+
+  <section class="section" id="tarifs">
+    <div class="container">
+      <div class="eyebrow" data-i18n="cg.tarifs.eyebrow">Tarifs au kilo</div>
+      <h2 data-i18n="cg.tarifs.h" style="margin-bottom:26px">Deux formules, un prix clair</h2>
+      <div class="cg-tarifs" id="cg-tarifs"></div>
+      <div class="cg-sim">
+        <div>
+          <h3 data-i18n="cg.sim.h">Simulateur de prix</h3>
+          <label for="cg-sim-kg" data-i18n="cg.sim.poids">Poids de vos bagages (kg)</label>
+          <div class="cg-poids"><button type="button" data-pas="-1" aria-label="−">−</button><input id="cg-sim-kg" type="number" inputmode="decimal" min="0.1" max="100000" step="0.5" value="10"><button type="button" data-pas="1" aria-label="+">+</button></div>
+        </div>
+        <div class="cg-sim-res" id="cg-sim-res"></div>
+        <p class="note" data-i18n="cg.sim.note">Estimation selon le poids indiqué.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="departs" style="padding-top:0">
+    <div class="container">
+      <div class="eyebrow" data-i18n="cg.dep.eyebrow">Calendrier</div>
+      <h2 data-i18n="cg.dep.h" style="margin-bottom:26px">Prochains départs</h2>
+      <div class="cg-departs" id="cg-departs"></div>
+    </div>
+  </section>
+
+  <section class="section" id="reserver" style="padding-top:0">
+    <div class="container cg-res">
+      <div class="cg-res-info">
+        <div class="eyebrow" data-i18n="cg.res.eyebrow">Réservation</div>
+        <h2 data-i18n="cg.res.h">Demande d'expédition</h2>
+        <p data-i18n="cg.res.p">Remplissez ce formulaire : vous recevez aussitôt une référence et les instructions de dépôt.</p>
+        <div class="etapes" style="grid-template-columns:1fr;gap:12px">
+          <div class="etape"><h3 data-i18n="cg.how1.t">Vous réservez</h3><p data-i18n="cg.how1.p"></p></div>
+          <div class="etape"><h3 data-i18n="cg.how2.t">Vous déposez à Guangzhou</h3><p data-i18n="cg.how2.p"></p></div>
+          <div class="etape"><h3 data-i18n="cg.how3.t">Vous suivez en direct</h3><p data-i18n="cg.how3.p"></p></div>
+          <div class="etape"><h3 data-i18n="cg.how4.t">Vous retirez au Sénégal</h3><p data-i18n="cg.how4.p"></p></div>
+        </div>
+      </div>
+      <div class="bloc" id="cg-res-zone"></div>
+    </div>
+  </section>
+
+  <section class="section" id="produits" hidden style="padding-top:0">
+    <div class="container">
+      <div class="eyebrow" data-i18n="cg.prod.eyebrow">Arrivages</div>
+      <h2 data-i18n="cg.prod.h" style="margin-bottom:26px">Produits importés disponibles</h2>
+      <div class="cg-produits" id="cg-produits"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta">
+        <h2 data-i18n="cg.h1">Cheikh Baye Fall Cargo</h2>
+        <p id="cg-cta-p"></p>
+        <a class="btn btn-wa" id="cg-cta-wa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/descriptions.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cargo.js"></script>
+</body>
+</html>

@@ -120,7 +120,7 @@
       '<a class="logo" href="index.html"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "<small>" + t("slogan") + "</small></span></a>" +
       '<button class="burger" aria-label="' + t("menu") + '">' + ICO.menu + "</button>" +
       '<nav class="nav">' +
-      lien("index.html", t("nav.home")) + lien("vehicules.html", t("nav.catalog")) + lien("a-propos.html", t("nav.about")) + lien("contact.html", t("nav.contact")) +
+      lien("index.html", t("nav.home")) + lien("vehicules.html", t("nav.catalog")) + lien("cargo.html", t("nav.cargo")) + lien("a-propos.html", t("nav.about")) + lien("contact.html", t("nav.contact")) +
       '<a class="btn" href="' + lienWA(t("wa.rdv")) + '" target="_blank" rel="noopener">' + t("nav.rdv") + "</a>" +
       "</nav></div>";
     header.querySelector(".nav").appendChild(selecteurLangue());
@@ -134,7 +134,7 @@
     footer.innerHTML =
       '<div class="container"><div class="footer-grille">' +
       '<div><div class="logo" style="margin-bottom:12px"><img src="images/logo-emblem.png" alt=""><span>' + S.nom + "</span></div><p>" + t("footer.about") + "</p></div>" +
-      '<div><h4>' + t("footer.nav") + '</h4><a href="index.html">' + t("nav.home") + '</a><a href="vehicules.html">' + t("footer.vehicles") + '</a><a href="a-propos.html">' + t("nav.about") + '</a><a href="contact.html">' + t("nav.contact") + '</a></div>' +
+      '<div><h4>' + t("footer.nav") + '</h4><a href="index.html">' + t("nav.home") + '</a><a href="vehicules.html">' + t("footer.vehicles") + '</a><a href="cargo.html">' + t("footer.cargo") + '</a><a href="cargo.html#suivi">' + t("footer.track") + '</a><a href="a-propos.html">' + t("nav.about") + '</a><a href="contact.html">' + t("nav.contact") + '</a></div>' +
       '<div><h4>' + t("footer.products") + '</h4>' + S.rubriques.map(r => '<a href="' + lienRubrique(r) + '">' + rubNom(r) + "</a>").join("") + "</div>" +
       '' +
       '<div><h4>' + t("footer.contact") + '</h4><a href="' + lienWA(t("wa.hello")) + '" target="_blank" rel="noopener">WhatsApp : ' + S.whatsappAffiche + "</a>" +

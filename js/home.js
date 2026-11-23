@@ -53,3 +53,27 @@ window.avecDonnees(function () {
   document.getElementById("cta-wa").href = lienWA(t("wa.cars"));
   apparitions();
 });
+
+// Bloc « Cheikh Baye Fall Cargo » de l'accueil : tarifs (de la base si possible, sinon de config.js)
+(function () {
+  const zone = document.getElementById("home-cargo-tarifs");
+  if (!zone) return;
+  const C = window.SITE.cargo || {}, T = Object.assign({}, C.tarifs || {});
+  const ico = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>';
+  const dessiner = () => {
+    zone.innerHTML = ["standard", "express"].filter(m => T[m]).map(m =>
+      '<a class="cg-tarif ' + m + '" href="cargo.html#tarifs"><div class="cg-tarif-tete">' + ico + t("cg.mode." + m) + '</div><div class="cg-tarif-corps">' +
+      '<span class="cg-delai">' + (T[m].delai_jours === 1 ? t("cg.jour") : t("cg.jours", { n: T[m].delai_jours })) + '</span>' +
+      '<div class="cg-prix">' + fmtNombre(T[m].prix_kg) + '</div><span class="cg-unite">FCFA ' + t("cg.parkg") + "</span></div></a>").join("");
+  };
+  dessiner();
+  const sb = window.sb || {};
+  if (!sb.actif) return;
+  fetch(sb.url + "/rest/v1/cargo_tarifs?select=mode,prix_kg,delai_jours", { headers: Object.assign({ apikey: sb.cle }, /^eyJ/.test(sb.cle || "") ? { Authorization: "Bearer " + sb.cle } : {}) })
+    .then(r => r.ok ? r.json() : null).then(l => {
+      if (!Array.isArray(l) || !l.length) return;
+      Object.keys(T).forEach(k => delete T[k]);
+      l.forEach(x => { T[x.mode] = { prix_kg: +x.prix_kg, delai_jours: +x.delai_jours }; });
+      dessiner();
+    }).catch(() => {});
+})();

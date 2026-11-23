@@ -54,6 +54,32 @@
     .msg-carte p { white-space: pre-wrap; margin: 8px 0; }
     .msg-carte small { color: var(--gris); }
     .cache { display: none !important; }
+    /* Cargo */
+    .cg-sous { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+    .cg-sous button { border: 0; background: transparent; padding: 7px 12px; border-radius: 8px; font-weight: 700; cursor: pointer; color: var(--gris); font: inherit; font-weight: 700; }
+    .cg-sous button.actif { background: var(--vert-clair); color: var(--vert-fonce); }
+    .cg-outils { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .cg-outils input, .cg-outils select { padding: 9px 10px; border: 1px solid #cfd6e6; border-radius: 8px; font: inherit; background: #fff; }
+    .cg-outils input { flex: 1; min-width: 180px; }
+    .cg-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .cg-table th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--gris); padding: 8px; border-bottom: 2px solid #eef0f6; }
+    .cg-table td { padding: 10px 8px; border-bottom: 1px solid #eef0f6; vertical-align: top; }
+    .cg-table td small { color: var(--gris); display: block; }
+    .cg-table select { padding: 6px; border-radius: 8px; border: 1px solid #cfd6e6; font: inherit; font-size: .85rem; }
+    .cg-code-a { font-weight: 800; letter-spacing: .04em; color: var(--vert-fonce); white-space: nowrap; }
+    .cg-pill { display: inline-block; border-radius: 99px; padding: 2px 9px; font-size: .74rem; font-weight: 700; background: #eef0f6; color: var(--gris); white-space: nowrap; }
+    .cg-pill.express { background: #fdecea; color: #a1281c; } .cg-pill.standard { background: var(--vert-clair); color: var(--vert-fonce); }
+    .cg-pill.paye { background: #e7f6ec; color: #1b6b34; } .cg-pill.a_payer { background: #fff4dc; color: #8a5a00; }
+    .cg-actes { display: flex; gap: 4px; flex-wrap: wrap; }
+    .cg-total { background: var(--vert-clair); border-radius: 10px; padding: 12px 14px; font-weight: 800; color: var(--vert-fonce); margin-top: 12px; font-size: 1.05rem; }
+    .cg-nouveau { background: #e7f6ec; border: 1px solid #9fc7a9; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+    .cg-nouveau .code { font-size: 1.6rem; font-weight: 800; letter-spacing: .08em; color: var(--vert-fonce); }
+    .cg-dep-carte { border: 1px solid #e3e8f2; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+    .cg-dep-carte h3 { font-size: 1rem; margin: 0 0 4px; }
+    .cg-dep-carte .ligne { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+    .cg-cases { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; } .cg-cases label { display: flex; gap: 6px; align-items: center; margin: 0; font-weight: 600; color: var(--texte); }
+    .cg-cases input { width: auto; }
+    @media (max-width: 760px) { .cg-table thead { display: none; } .cg-table tr { display: block; border-bottom: 1px solid #e3e8f2; padding: 8px 0; } .cg-table td { display: block; border: 0; padding: 3px 0; } }
   </style>
 </head>
 <body>
@@ -83,16 +109,19 @@
         <button data-o="vehicules" class="actif">Véhicules</button>
         <button data-o="messages">Messages <span id="p-msg" class="pastille cache">0</span></button>
         <button data-o="commandes">Commandes <span id="p-cmd" class="pastille cache">0</span></button>
+        <button data-o="cargo">Cargo <span id="p-cargo" class="pastille cache">0</span></button>
         <button data-o="stats">Statistiques</button>
       </nav>
       <div id="flash"></div>
       <section id="o-vehicules"></section>
       <section id="o-messages" class="cache"></section>
       <section id="o-commandes" class="cache"></section>
+      <section id="o-cargo" class="cache"></section>
       <section id="o-stats" class="cache"></section>
     </main>
   </div>
   <script src="js/config.js"></script>
+  <script src="js/admin-cargo.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

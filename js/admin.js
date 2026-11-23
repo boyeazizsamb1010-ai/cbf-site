@@ -81,7 +81,8 @@
   $("onglets").addEventListener("click", e => {
     const b = e.target.closest("button[data-o]"); if (!b) return;
     document.querySelectorAll("#onglets button").forEach(x => x.classList.toggle("actif", x === b));
-    ["vehicules", "messages", "commandes", "stats"].forEach(o => $("o-" + o).classList.toggle("cache", o !== b.dataset.o));
+    ["vehicules", "messages", "commandes", "stats", "cargo"].forEach(o => { if ($("o-" + o)) $("o-" + o).classList.toggle("cache", o !== b.dataset.o); });
+    if (b.dataset.o === "cargo" && window.CBF_CARGO) window.CBF_CARGO.ouvrir();
     if (b.dataset.o === "vehicules") chargerVehicules();
     if (b.dataset.o === "messages") chargerMessages();
     if (b.dataset.o === "commandes") chargerCommandes();
@@ -375,10 +376,14 @@
     $("s-jours").value = String(jours); $("s-jours").onchange = e => chargerStats(+e.target.value);
   }
 
+  // outils partagés avec l'onglet Cargo (js/admin-cargo.js)
+  window.CBF_ADMIN = { api, flash, esc, envoyerPhoto, miniPhoto };
+
   // ---------- Démarrage ----------
   async function demarrer() {
     $("login").classList.add("cache"); $("app").classList.remove("cache");
     await chargerVehicules(); compterNonLus(); compterCommandes();
+    if (window.CBF_CARGO) window.CBF_CARGO.compter();
   }
   session = lireSession();
   if (session) demarrer(); else $("login").classList.remove("cache");

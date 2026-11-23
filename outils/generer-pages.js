@@ -54,7 +54,7 @@ for (const v of V) {
   fs.writeFileSync(path.join(racine, "v", v.id + ".html"), html);
 }
 
-const pages = ["", "vehicules.html", "a-propos.html", "contact.html"];
+const pages = ["", "vehicules.html", "cargo.html", "a-propos.html", "contact.html"];
 const urls = pages.map(p => site + "/" + p).concat(V.map(v => site + "/v/" + v.id + ".html"));
 fs.writeFileSync(path.join(racine, "sitemap.xml"),
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
