@@ -39,11 +39,13 @@ window.SITE = {
   // ----- Rubriques du site (accueil + catalogue) -----
   // "type" = valeur du champ type dans data.js (par défaut : "voiture")
   // "etat" = filtre facultatif (Neuf / Occasion)
+  // image : photo de fond de la tuile (nom du fichier dans images/vehicules/g/ sans ".webp").
+  // Sans image, la tuile prend la 1re photo d'un article de la rubrique, sinon un fond dégradé.
   rubriques: [
-    { cle: "voitures-neuves", nom: "Voitures neuves", type: "voiture", etat: "Neuf", icone: "voiture", texte: "Voitures neuves, directement de Chine." },
-    { cle: "voitures-occasion", nom: "Voitures d'occasion", type: "voiture", etat: "Occasion", icone: "voiture", texte: "Occasions contrôlées, photos et kilométrage réels." },
+    { cle: "voitures-neuves", image: "haval-f7x-avant-3", nom: "Voitures neuves", type: "voiture", etat: "Neuf", icone: "voiture", texte: "Voitures neuves, directement de Chine." },
+    { cle: "voitures-occasion", image: "haval-h6s-avant-3", nom: "Voitures d'occasion", type: "voiture", etat: "Occasion", icone: "voiture", texte: "Occasions contrôlées, photos et kilométrage réels." },
     { cle: "moteurs", nom: "Moteurs", type: "moteur", icone: "moteur", texte: "Moteurs et pièces mécaniques." },
-    { cle: "tracteurs", nom: "Tracteurs", type: "tracteur", icone: "tracteur", texte: "Tracteurs et matériel agricole." },
+    { cle: "tracteurs", image: "tracteur-rouge-avant-1", nom: "Tracteurs", type: "tracteur", icone: "tracteur", texte: "Tracteurs et matériel agricole." },
     { cle: "camions", nom: "Camions", type: "camion", icone: "camion", texte: "Camions et véhicules de transport." },
     { cle: "machines", nom: "Machines industrielles", type: "machine", icone: "machine", texte: "Engins et machines pour l'industrie." },
     { cle: "arachides", nom: "Décortiqueuses d'arachides", type: "arachide", icone: "arachide", texte: "Machines de décorticage pour arachides." }

@@ -39,9 +39,17 @@ window.avecDonnees(function () {
 
   // Tuiles « Que recherchez-vous ? »
   const S = window.SITE;
+  const fondTuile = (r, articles) => {
+    if (r.image) { const f = String(r.image).replace(/\.(webp|jpe?g|png)$/i, ""); return { src: "images/vehicules/m/" + f + ".webp", srcset: "images/vehicules/m/" + f + ".webp 600w, images/vehicules/g/" + f + ".webp 1200w" }; }
+    const v = articles.find(x => x.photos && x.photos.length);
+    return v ? { src: miniDe(v)[0], srcset: "" } : null;
+  };
   document.getElementById("rubriques").innerHTML = S.rubriques.map(r => {
-    const n = window.VEHICULES.filter(v => typeDe(v) === r.type && (!r.etat || v.etat === r.etat)).length;
-    return '<a class="tuile apparait" href="' + lienRubrique(r) + '"><div class="ico">' + icone(r.icone) + "</div>" +
+    const articles = window.VEHICULES.filter(v => typeDe(v) === r.type && (!r.etat || v.etat === r.etat));
+    const n = articles.length, f = fondTuile(r, articles);
+    const img = f ? '<img src="' + f.src + '"' + (f.srcset ? ' srcset="' + f.srcset + '" sizes="(min-width: 1200px) 25vw, (min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"' : "") +
+      ' alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add(\'sans-photo\');this.remove()">' : "";
+    return '<a class="tuile apparait' + (f ? "" : " sans-photo") + '" href="' + lienRubrique(r) + '">' + img +
       "<h3>" + rubNom(r) + "</h3><p>" + rubTexte(r) + '</p><span class="tuile-nb' + (n ? "" : " bientot") + '">' + (n ? t(n > 1 ? "tile.n" : "tile.1", { n }) : t("tile.soon")) + " →</span></a>";
   }).join("");
 
